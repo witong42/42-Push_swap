@@ -6,15 +6,15 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 19:17:36 by witong            #+#    #+#             */
-/*   Updated: 2024/04/15 19:45:44 by witong           ###   ########.fr       */
+/*   Updated: 2024/05/20 21:07:52 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int	ft_isdigit(int c)
 {
-	if (c >= 32 && c <= 126)
+	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
 }
