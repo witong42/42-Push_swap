@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 21:42:46 by witong            #+#    #+#             */
-/*   Updated: 2024/05/22 21:05:39 by witong           ###   ########.fr       */
+/*   Updated: 2024/05/23 20:35:20 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return((char *)&s[i]);
+			return ((char *)&s[i]);
 		i++;
 	}
 	if ((char)c == '\0')

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 21:42:34 by witong            #+#    #+#             */
-/*   Updated: 2024/05/22 22:13:52 by witong           ###   ########.fr       */
+/*   Updated: 2024/05/23 21:15:44 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	i;
 
 	tmp = (char *)malloc(size * count);
-	if (tmp == NULL)
+	if (!tmp)
 		return (NULL);
 	i = 0;
-	while(i < size * count)
+	while (i < size * count)
 	{
 		tmp[i] = 0;
 		i++;
