@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 21:42:39 by witong            #+#    #+#             */
-/*   Updated: 2024/05/23 20:36:40 by witong           ###   ########.fr       */
+/*   Updated: 2024/05/24 16:10:59 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int				i;
+	size_t			i;
 	unsigned char	*ucs;
 
 	ucs = (unsigned char *)s;
