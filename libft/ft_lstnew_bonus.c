@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 19:23:45 by witong            #+#    #+#             */
-/*   Updated: 2024/05/30 18:49:49 by witong           ###   ########.fr       */
+/*   Created: 2024/06/04 18:48:36 by witong            #+#    #+#             */
+/*   Updated: 2024/06/04 18:59:02 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(const char *s1, const char *set)
+t_list	*ft_lstnew(void *content)
 {
-	char	*str;
-	int		i;
-	int		end;
+	t_list	*newlst;
 
-	if (!s1 || !set)
+	newlst = ft_calloc(sizeof(t_list), 1);
+	if (!newlst)
 		return (NULL);
-	i = 0;
-	end = ft_strlen(s1);
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	while (i < end && ft_strchr(set, s1[end - 1]))
-		end--;
-	str = ft_substr(s1, i, end - i);
-	return (str);
+	newlst->content = content;
+	newlst->next = NULL;
+	return (newlst);
 }
