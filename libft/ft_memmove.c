@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 19:47:22 by witong            #+#    #+#             */
-/*   Updated: 2024/05/24 15:35:53 by witong           ###   ########.fr       */
+/*   Updated: 2024/06/09 20:20:57 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*tmp_dest;
 	unsigned char	*tmp_src;
 
+	if (!dest && !src)
+		return (NULL);
 	tmp_dest = (unsigned char *)dest;
 	tmp_src = (unsigned char *)src;
 	if (tmp_dest > tmp_src)

@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 19:02:13 by witong            #+#    #+#             */
-/*   Updated: 2024/06/09 20:29:47 by witong           ###   ########.fr       */
+/*   Created: 2024/06/05 02:52:01 by witong            #+#    #+#             */
+/*   Updated: 2024/06/09 20:28:36 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	t_list	*newlst;
+	t_list	*tmplst;
+
+	newlst = NULL;
+	while (lst)
+	{
+		tmplst = ft_lstnew(f(lst->content));
+		if (!tmplst)
+		{
+			ft_lstclear(&newlst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&newlst, tmplst);
+		lst = lst->next;
+	}
+	return (newlst);
 }
