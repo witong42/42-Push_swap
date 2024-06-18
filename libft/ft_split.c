@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 21:57:22 by witong            #+#    #+#             */
-/*   Updated: 2024/06/04 00:23:30 by witong           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:13:53 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ char	**ft_split(char const *s, char c)
 	array = (char **)malloc(sizeof(char *) * (total_words + 1));
 	if (!array)
 		return (NULL);
-	split_words(array, s, c);
+	array = split_words(array, s, c);
 	return (array);
 }
