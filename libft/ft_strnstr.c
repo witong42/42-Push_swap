@@ -6,20 +6,20 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 21:42:51 by witong            #+#    #+#             */
-/*   Updated: 2024/06/09 20:17:12 by witong           ###   ########.fr       */
+/*   Updated: 2024/06/18 12:39:37 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	 "libft.h"
+#include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
-	i = 0;
-	if (!needle[0] || len == 0)
+	if (needle[0] == '\0')
 		return ((char *)haystack);
+	i = 0;
 	while (haystack[i] && i < len)
 	{
 		j = 0;
