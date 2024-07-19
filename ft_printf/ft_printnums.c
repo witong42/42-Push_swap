@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:50:39 by witong            #+#    #+#             */
-/*   Updated: 2024/07/19 02:54:47 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/19 04:29:36 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	ft_printnbr(int nbr)
 	}
 	if (nbr >= 10)
 		i += ft_printnbr(nbr / 10);
-	else
-		i += ft_printchar(nbr % 10 + '0');
+	i += ft_printchar(nbr % 10 + '0');
 	return (i);
 }
 
@@ -62,8 +61,7 @@ int	ft_printuint(unsigned int unbr)
 	i = 0;
 	if (unbr >= 10)
 		i += ft_printnbr(unbr / 10);
-	else
-		i += ft_printchar(unbr % 10 + '0');
+	i += ft_printchar(unbr % 10 + '0');
 	return (i);
 }
 

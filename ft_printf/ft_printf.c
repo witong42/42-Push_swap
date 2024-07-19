@@ -6,26 +6,26 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:12:59 by witong            #+#    #+#             */
-/*   Updated: 2024/07/19 03:13:04 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/19 04:42:52 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_format_check(va_list args, const char format)
+static int	ft_format_check(va_list *args, const char format)
 {
 	if (format == 'c')
-		return (ft_printchar(va_arg(args, int)));
+		return (ft_printchar(va_arg(*args, int)));
 	else if (format == 's')
-		return (ft_printstr(va_arg(args, char *)));
+		return (ft_printstr(va_arg(*args, char *)));
 	else if (format == 'p')
-		return (ft_printptr(va_arg(args, unsigned long)));
+		return (ft_printptr(va_arg(*args, unsigned long)));
 	else if (format == 'd' || format == 'i')
-		return (ft_printnbr(va_arg(args, int)));
+		return (ft_printnbr(va_arg(*args, int)));
 	else if (format == 'u')
-		return (ft_printuint(va_arg(args, unsigned int)));
+		return (ft_printuint(va_arg(*args, unsigned int)));
 	else if (format == 'x' || format == 'X')
-		return (ft_printhex(va_arg(args, unsigned int), format));
+		return (ft_printhex(va_arg(*args, unsigned int), format));
 	else if (format == '%')
 		return (ft_printchar('%'));
 	else
@@ -46,7 +46,9 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			len += ft_format_check(args, format[i]);
+			if (format[i] == '\0')
+				break;
+			len += ft_format_check(&args, format[i]);
 		}
 		else
 			len += ft_printchar(format[i]);
