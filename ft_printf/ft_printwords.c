@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 21:09:00 by witong            #+#    #+#             */
-/*   Updated: 2024/07/19 15:15:58 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 17:49:00 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_printchar(int c)
 {
-	return (write(1, &c, 1));
+	write(1, &c, 1);
+	return (1);
 }
 
 int	ft_printstr(char *str)
@@ -23,8 +24,12 @@ int	ft_printstr(char *str)
 
 	i = 0;
 	if (!str)
-		return (write(1, "(null)", 6));
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (str[i])
-		i += ft_printchar(str[i]);
+		i++;
+	write(1, str, i);
 	return (i);
 }

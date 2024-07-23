@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:50:39 by witong            #+#    #+#             */
-/*   Updated: 2024/07/23 13:27:33 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 17:53:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,27 @@ int	ft_printnbr(int nbr)
 
 	i = 0;
 	if (nbr == -2147483648)
-		return (write(1, "-2147483648", 11));
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
 	if (nbr < 0)
 	{
 		i += ft_printchar('-');
 		nbr = -nbr;
 	}
-	if (nbr >= 10)
-		i += ft_printnbr(nbr / 10);
-	i += ft_printchar(nbr % 10 + '0');
+	i += ft_printuint(nbr);
 	return (i);
 }
 
-int	ft_printuint(unsigned int unbr)
+int	ft_printuint(unsigned int nbr)
 {
 	int	i;
 
 	i = 0;
-	if (unbr >= 10)
-		i += ft_printnbr(unbr / 10);
-	i += ft_printchar(unbr % 10 + '0');
+	if (nbr >= 10)
+		i += ft_printuint(nbr / 10);
+	i += ft_printchar(nbr % 10 + '0');
 	return (i);
 }
 

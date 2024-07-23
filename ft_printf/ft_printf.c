@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:12:59 by witong            #+#    #+#             */
-/*   Updated: 2024/07/19 15:57:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 17:40:28 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ static int	ft_format_check(va_list *args, const char format)
 	else if (format == '%')
 		return (ft_printchar('%'));
 	else
-		return (ft_printchar(format));
+	{
+		ft_printchar('%');
+		ft_printchar(format);
+		return (2);
+	}
 }
 
 int	ft_printf(const char *format, ...)
@@ -40,6 +44,8 @@ int	ft_printf(const char *format, ...)
 
 	len = 0;
 	i = 0;
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	while (format[i])
 	{

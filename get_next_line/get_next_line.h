@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:07:59 by witong            #+#    #+#             */
-/*   Updated: 2024/07/21 21:31:26 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 15:11:11 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef MAX_FD
-#  define MAX_FD 420
+#  define MAX_FD 2048
 # endif
 
 # include <unistd.h>

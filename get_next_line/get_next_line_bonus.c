@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:45:00 by witong            #+#    #+#             */
-/*   Updated: 2024/07/21 23:32:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 15:14:47 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,19 @@ static char	*extract_line(char **cache)
 
 static ssize_t	read_and_cache(char **cache, int fd)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buffer;
 	ssize_t	read_size;
 	char	*tmp;
 
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE +1));
+	if (!buffer)
+		return (-1);
+	if (!*cache)
+		*cache = ft_strdup("");
 	read_size = read(fd, buffer, BUFFER_SIZE);
 	while (read_size > 0)
 	{
 		buffer[read_size] = '\0';
-		if (!*cache)
-		{
-			*cache = ft_strdup("");
-		}
 		tmp = ft_strjoin(*cache, buffer);
 		free(*cache);
 		*cache = tmp;
@@ -57,6 +58,7 @@ static ssize_t	read_and_cache(char **cache, int fd)
 			break ;
 		read_size = read(fd, buffer, BUFFER_SIZE);
 	}
+	free(buffer);
 	return (read_size);
 }
 
