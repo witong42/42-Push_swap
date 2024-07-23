@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:50:39 by witong            #+#    #+#             */
-/*   Updated: 2024/07/19 04:29:36 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 13:27:33 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	ft_printptr(unsigned long ptr)
 	int	i;
 
 	i = 0;
-	i += ft_printstr("0x");
 	if (ptr == 0)
-		i += ft_printchar('0');
+		i += ft_printstr("(nil)");
 	else
+	{
+		i += ft_printstr("0x");
 		i += ft_printhexbase(ptr, "0123456789abcdef");
+	}
 	return (i);
 }
 
