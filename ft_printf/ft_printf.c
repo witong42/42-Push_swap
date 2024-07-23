@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:12:59 by witong            #+#    #+#             */
-/*   Updated: 2024/07/23 17:40:28 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 18:26:11 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '\0')
-				break ;
+			if (!format[i])
+				return (-1);
 			len += ft_format_check(&args, format[i]);
 		}
 		else
