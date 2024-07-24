@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:45:00 by witong            #+#    #+#             */
-/*   Updated: 2024/07/23 15:14:47 by witong           ###   ########.fr       */
+/*   Updated: 2024/07/23 23:30:54 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,29 @@ static char	*extract_line(char **cache)
 	i = 0;
 	while ((*cache)[i] && (*cache)[i] != '\n')
 		i++;
+	line = ft_substr(*cache, 0, i + 1);
+	if (!line)
+	{
+		free(*cache);
+		*cache = NULL;
+		return (NULL);
+	}
 	if ((*cache)[i] == '\n')
-	{
-		line = ft_substr(*cache, 0, i + 1);
 		tmp = ft_strdup(*cache + i + 1);
-	}
 	else
-	{
-		line = ft_strdup(*cache);
 		tmp = NULL;
-	}
 	free(*cache);
 	*cache = tmp;
 	return (line);
 }
 
-static ssize_t	read_and_cache(char **cache, int fd)
+static char	*read_and_cache(char **cache, int fd)
 {
 	char	*buffer;
-	ssize_t	read_size;
 	char	*tmp;
+	ssize_t	read_size;
 
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE +1));
-	if (!buffer)
-		return (-1);
-	if (!*cache)
-		*cache = ft_strdup("");
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	read_size = read(fd, buffer, BUFFER_SIZE);
 	while (read_size > 0)
 	{
@@ -59,22 +56,24 @@ static ssize_t	read_and_cache(char **cache, int fd)
 		read_size = read(fd, buffer, BUFFER_SIZE);
 	}
 	free(buffer);
-	return (read_size);
+	if (read_size < 0 || !*cache || !**cache)
+	{
+		free(*cache);
+		*cache = NULL;
+		return (NULL);
+	}
+	return (extract_line(cache));
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*cache[MAX_FD];
-	ssize_t		read_size;
 
 	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	read_size = read_and_cache(&cache[fd], fd);
-	if (read_size < 0 || !cache[fd] || !cache[fd][0])
-	{
-		free(cache[fd]);
-		cache[fd] = NULL;
+	if (!cache[fd])
+		cache[fd] = ft_strdup("");
+	if (!cache[fd])
 		return (NULL);
-	}
-	return (extract_line(&cache[fd]));
+	return (read_and_cache(&cache[fd], fd));
 }
