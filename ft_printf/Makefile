@@ -5,12 +5,13 @@ SRCS = ft_printf.c ft_printnums.c ft_printwords.c
 OBJS = $(SRCS:%.c=%.o)
 
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
 %.o : %.c
-	$(CC) $(CGLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)
