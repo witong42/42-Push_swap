@@ -6,23 +6,38 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:23:24 by witong            #+#    #+#             */
-/*   Updated: 2024/08/20 12:40:44 by witong           ###   ########.fr       */
+/*   Updated: 2024/08/20 13:31:05 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "srcs/ft_printf.h"
-#include <stdlib.h>
 
-int	main (int ac, char **av)
+void	ft_handler(int signal)
+{
+	static int	bit;
+	static int	i;
+
+	if (signal == SIGUSR1)
+		i |= (0x01 << bit);
+	bit++;
+	if (bit == 8)
+	{
+		ft_printf("%c", i);
+		bit = 0;
+		i = 0;
+	}
+}
+
+int	main(void)
 {
 	int	pid;
 
 	pid = getpid();
+	ft_printf("PID: %d\n", pid);
 	while (1)
 	{
-		if (atoi(av[1]) == pid)
-			ft_printf("YES");
+		signal(SIGUSR1, ft_handler);
+		signal(SIGUSR2, ft_handler);
 		pause ();
 	}
 	return (0);
