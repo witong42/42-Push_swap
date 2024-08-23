@@ -20,10 +20,10 @@ all: $(SRV_NAME) $(CLI_NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(SRV_NAME): $(OBJS) $(SRV_OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(SRV_OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(SRV_OBJS) -o $(SRV_NAME)
 
 $(CLI_NAME): $(OBJS) $(CLI_OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(CLI_OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(CLI_OBJS) -o $(CLI_NAME)
 
 clean:
 	$(RM) $(OBJS) $(SRV_OBJS) $(CLI_OBJS)
