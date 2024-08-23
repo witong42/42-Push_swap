@@ -6,13 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:23:24 by witong            #+#    #+#             */
-/*   Updated: 2024/08/20 13:31:05 by witong           ###   ########.fr       */
+/*   Updated: 2024/08/22 07:51:49 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_handler(int signal)
+static void	ft_handler(int signal)
 {
 	static int	bit;
 	static int	i;
@@ -34,7 +34,7 @@ int	main(void)
 
 	pid = getpid();
 	ft_printf("PID: %d\n", pid);
-	while (1)
+	while (pid && 1)
 	{
 		signal(SIGUSR1, ft_handler);
 		signal(SIGUSR2, ft_handler);
