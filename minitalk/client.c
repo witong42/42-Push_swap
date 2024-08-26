@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:23:32 by witong            #+#    #+#             */
-/*   Updated: 2024/08/23 13:07:08 by witong           ###   ########.fr       */
+/*   Updated: 2024/08/26 12:59:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_atoi(char *nptr)
 {
 	int	i;
 	int	res;
-	int sign;
+	int	sign;
 
 	i = 0;
 	res = 0;
@@ -63,11 +63,10 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac == 3)
 	{
-		if ((pid = ft_atoi(av[1])) < 0)
-		{
-			ft_printf("Error: invalid PID.\n");
-			return (1);
-		}
+		pid = ft_atoi(av[1]);
+		if (pid < 0)
+			return (ft_printf("Error: Provided PID is \
+incorrect or negative.\n") && 1);
 		msg = av[2];
 		while (msg[i])
 			ft_send_bits(pid, msg[i++]);
@@ -75,10 +74,7 @@ int	main(int ac, char **av)
 		ft_send_bits(pid, '\0');
 	}
 	else
-	{
-		ft_printf("Error: wrong format.\n");
-		ft_printf("Correct Format: ./client <PID> <MESSAGE>\n");
-		return (1);
-	}
+		return (ft_printf("Error: wrong format.\nCorrect\
+Format: ./client <PID> <MESSAGE>\n") && 1);
 	return (0);
 }
