@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:01:34 by witong            #+#    #+#             */
-/*   Updated: 2024/08/28 08:09:34 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/06 10:45:51 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@ ESC and X close no leaks
 TL,DR of the app
 */
 
+#include "fractol.h"
+
 int main(int ac, char **av)
 {
-	if (ac == 2 ) //TODO mandelbrot && julia
+	if (ac >= 2 && ac <= 4 && (ft_strcmp(av[1], "mandelbrot") == 0
+		|| ft_strcmp(av[1], "julia") == 0))
 	{
-		app
+		if (ft_strcmp(av[1], "mandelbrot") == 0)
+			ft_putstr_fd("1\0", 1);
+//			fractolapp(av[1]);
+		else if (ac == 4 && ft_strcmp(av[1], "julia") == 0)
+			ft_putstr_fd("2\0", 1);
+//			fractolapp(av[1], av[2], av[3]);
 	}
 	else
-		//TODO ERROR
+	{
+		ft_putstr_fd("Usage: ./fractol <mandelbrot|julia> [<real> <imgry>]\n", 2);
+		return (0);
+	}
 }
