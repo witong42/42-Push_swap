@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:01:34 by witong            #+#    #+#             */
-/*   Updated: 2024/09/06 10:45:51 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:06:08 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,32 @@ TL,DR of the app
 
 #include "fractol.h"
 
+int close_window(int keycode, void *param)
+{
+	(void)param;
+	if (keycode == ESC_KEY)
+		exit(0);
+	return (0);
+}
+
 int main(int ac, char **av)
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
+
+
 	if (ac >= 2 && ac <= 4 && (ft_strcmp(av[1], "mandelbrot") == 0
 		|| ft_strcmp(av[1], "julia") == 0))
 	{
-		if (ft_strcmp(av[1], "mandelbrot") == 0)
-			ft_putstr_fd("1\0", 1);
-//			fractolapp(av[1]);
-		else if (ac == 4 && ft_strcmp(av[1], "julia") == 0)
-			ft_putstr_fd("2\0", 1);
-//			fractolapp(av[1], av[2], av[3]);
+		mlx_ptr = mlx_init();
+		win_ptr = mlx_new_window(mlx_ptr, HEIGHT, WIDTH, "Fractol Window");
+		mlx_key_hook(win_ptr, close_window, NULL);
+		mlx_loop(mlx_ptr);
 	}
 	else
 	{
-		ft_putstr_fd("Usage: ./fractol <mandelbrot|julia> [<real> <imgry>]\n", 2);
+		ft_putstr_fd(ERROR_MSG, 2);
 		return (0);
 	}
+	return (0);
 }

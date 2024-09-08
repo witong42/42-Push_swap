@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:10:05 by witong            #+#    #+#             */
-/*   Updated: 2024/09/06 10:42:59 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:01:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,21 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
-#define ERROR_MSG "Incorrect inputs, Please enter\n\t" ./fractol mandelbrot\" or \n\t".fractol julia <value1> <value2>\"\n"
+#define ERROR_MSG "Incorrect inputs, Please enter\n\t./fractol mandelbrot\n\tor\n\t./fractol julia <value1> <value2>\n"
+#define ESC_KEY 65307
+#define WIDTH 800
+#define HEIGHT 800
 
-typedef struct s_fractal
+typedef struct	s_img
+{
+	void	*img_ptr;
+	char	*pxl_ptr;
+	int		bpp;
+	int		endian;
+	int		line_len;
+}		t_img;
+
+typedef struct	s_fractal
 {
 	void	*mlx_connection;
 	void	*mlx_window;
