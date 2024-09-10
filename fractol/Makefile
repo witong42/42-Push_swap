@@ -1,6 +1,8 @@
 NAME = fractol
 
-SRCS = main.c fractol_utils.c
+SRC_PATH = srcs/
+SRC = main.c utils.c init.c
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(SRCS:%.c=%.o)
 
 CC = gcc
@@ -8,13 +10,13 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 MLX = minilibx-linux
-LIBS = -lmlx -lXext -lX11 -lm
+LIBS = -L$(MLX) -lmlx_Linux -lXext -lX11 -lm
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX) -c $< -o $@
+	$(CC) $(CFLAGS) -I ./$(MLX) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(MLX) $(LIBS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
 all: $(NAME)
 
