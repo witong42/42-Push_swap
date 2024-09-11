@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:01:34 by witong            #+#    #+#             */
-/*   Updated: 2024/09/09 15:40:45 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/11 16:01:45 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int close_window(int keycode, void *param)
 /* Main that manage the input and window */
 int main(int ac, char **av)
 {
+	t_fractal	fract;
+
 	if (ac >= 2 && ac <= 4 && (ft_strcmp(av[1], "mandelbrot") == 0
 		|| ft_strcmp(av[1], "julia") == 0))
 	{
