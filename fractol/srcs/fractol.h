@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:10:05 by witong            #+#    #+#             */
-/*   Updated: 2024/09/11 17:27:41 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/14 14:54:24 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@
 so we use SIZE instead of HEIGHT and WIDTH. */
 
 // hooks codes
-# define ESC			53
-# define UP				126
-# define DOWN			125
-# define LEFT			123
-# define RIGHT			124
-# define R				15
-# define C				8
-# define H				4
-# define J				38
-# define P				35
-# define M				46
+# define ESC			65307
+# define UP				65362
+# define DOWN			65364
+# define LEFT			65361
+# define RIGHT			65363
+# define R				114
+# define C				99
+# define H				104
+# define J				106
+# define P				112
+# define M				109
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5
 
@@ -64,14 +64,14 @@ typedef struct	s_fractal
 	int			bpp; //bits per pixels
 	int			size_line; //where the line is written
 	int			endian; // where the endian is written
-	int		color;
 	double	shift_x;
 	double	shift_y;
-	double	zoom;
 	double	zx;
 	double	zy;
 	double	cx;
 	double	cy;
+	double	zoom;
+	int		color;
 	int		max_iterations;
 }		t_fractal;
 
@@ -80,6 +80,15 @@ int		ft_strcmp(char *s1, char *s2);
 void	ft_putstr_fd(char *s, int fd);
 
 // init.c
-void	fract_init(t_fractal *fract);
+void	close_window(t_fractal *fract);
+void	ft_fract_init(t_fractal *fract);
+void	ft_mlx_init(t_fractal *fract);
+
+// render.c
+void	fract_render(t_fractal *fract);
+
+// events.c
+int		key_events(int keycode, t_fractal *fract);
+int		mouse_events(int button, int x, int y, t_fractal *fract);
 
 #endif
