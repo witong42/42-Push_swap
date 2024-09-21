@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRC_PATH = srcs/
-SRC = main.c utils.c init.c render.c events.c
+SRC = main.c utils.c init.c render.c events.c clean.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(SRCS:%.c=%.o)
 
