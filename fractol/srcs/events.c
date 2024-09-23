@@ -6,13 +6,14 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:37:43 by witong            #+#    #+#             */
-/*   Updated: 2024/09/22 16:21:48 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/23 07:03:01 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// int (*f)(int keycode, void *param)
+/* Initializes the MLX library and creates a window and image
+int (*f)(int keycode, void *param) */
 int	key_events(int keycode, t_fractal *fract)
 {
 	if (keycode == ESC)
@@ -37,7 +38,8 @@ int	key_events(int keycode, t_fractal *fract)
 	return (0);
 }
 
-// int (*f)(int button, int x, int y, void *param)
+/* Handles mouse events for fractal zooming
+int (*f)(int button, int x, int y, void *param) */
 int	mouse_events(int button, int x, int y, t_fractal *fract)
 {
 	double	zoom_factor;

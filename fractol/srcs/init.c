@@ -6,12 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:37:48 by witong            #+#    #+#             */
-/*   Updated: 2024/09/22 16:24:17 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/23 07:03:25 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+// Initializes fractal parameters
 void	ft_fract_init(t_fractal *fract)
 {
 	fract->zoom = 1.0;
@@ -23,6 +24,7 @@ void	ft_fract_init(t_fractal *fract)
 	fract->color = 0x241212;
 }
 
+// Initializes the MLX library and creates a window and image
 void	ft_mlx_init(t_fractal *fract)
 {
 	fract->mlx = mlx_init();

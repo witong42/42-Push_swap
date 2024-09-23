@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:10:05 by witong            #+#    #+#             */
-/*   Updated: 2024/09/22 16:23:13 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/23 06:40:48 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_fractal
 	int		endian; // where the endian is written
 	double	shift_x;
 	double	shift_y;
+	double	zx;
+	double	zy;
 	double	cx;
 	double	cy;
 	double	zoom;
