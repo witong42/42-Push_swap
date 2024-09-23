@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:01:34 by witong            #+#    #+#             */
-/*   Updated: 2024/09/20 13:38:57 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:25:45 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	fract_render(fract);
 	mlx_key_hook(fract->win, key_events, fract);
 	mlx_mouse_hook(fract->win, mouse_events, fract);
-	mlx_hook(fract->win, 17, 0, success_close, fract); // Handle X button event
+	mlx_hook(fract->win, 17, 0, success_close, fract);
 	mlx_loop(fract->mlx);
 	failure_close(fract);
 }

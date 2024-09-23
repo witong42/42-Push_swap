@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:10:05 by witong            #+#    #+#             */
-/*   Updated: 2024/09/21 09:10:54 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:23:13 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <math.h>
 # include "../minilibx-linux/mlx.h"
 
-# define ERROR_MSG "Incorrect inputs, Please enter\n\t" \
-"./fractol mandelbrot\n\tor\n\t./fractol julia <value1> <value2>\n" \
-"Pretty Julia sets:\n\t" \
-"./fractol julia -0.7269 0.1889\n\t" \
-"./fractol julia 0.285 0.01\n\t" \
-"./fractol julia -0.70176 -0.3842\n\t" \
-"./fractol julia -0.835 -0.2321\n\t" \
-"./fractol julia 0.37 0.1\n\t"
+# define ERROR_MSG "Incorrect inputs, Please enter\n\t \
+./fractol mandelbrot\n\tor\n\t./fractol julia <value1> <value2>\n \
+Pretty Julia sets:\n\t \
+./fractol julia -0.7269 0.1889\n\t \
+./fractol julia 0.285 0.01\n\t \
+./fractol julia -0.70176 -0.3842\n\t \
+./fractol julia -0.835 -0.2321\n\t \
+./fractol julia 0.37 0.1\n\t"
 
 # define SIZE 800
 /* For practical purpose we want the window to be squared,

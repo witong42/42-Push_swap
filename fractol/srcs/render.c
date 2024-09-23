@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:38:07 by witong            #+#    #+#             */
-/*   Updated: 2024/09/21 09:59:39 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:27:41 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,23 @@ int calculate(t_fractal *fract, int x, int y)
 
 void fract_render(t_fractal *fract)
 {
-    int x;
-    int y;
-    int color;
-    char *pixel;
+	int x;
+	int y;
+	int color;
+	char *pixel;
 
-    y = 0;
-    while (y < SIZE)
-    {
-        x = 0;
-        while (x < SIZE)
-        {
-            color = calculate(fract, x, y);
-            pixel = fract->pxl_img + (y * fract->size_line + x * (fract->bpp / 8));
-            *(unsigned int *)pixel = color;
-            x++;
-        }
-        y++;
-    }
+	y = 0;
+	while (y < SIZE)
+	{
+		x = 0;
+		while (x < SIZE)
+		{
+			color = calculate(fract, x, y);
+			pixel = fract->pxl_img + (y * fract->size_line + x * (fract->bpp / 8));
+			*(unsigned int *)pixel = color;
+			x++;
+		}
+	y++;
+	}
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img, 0, 0);
 }

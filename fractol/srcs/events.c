@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:37:43 by witong            #+#    #+#             */
-/*   Updated: 2024/09/21 09:53:20 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:21:48 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	key_events(int keycode, t_fractal *fract)
 // int (*f)(int button, int x, int y, void *param)
 int	mouse_events(int button, int x, int y, t_fractal *fract)
 {
-	double zoom_factor;
-	(void)x;
-	(void)y;
+	double	zoom_factor;
 
+	(void) x;
+	(void) y;
 	if (button == SCROLL_UP)
 		zoom_factor = 1.05;
 	else if (button == SCROLL_DOWN)
@@ -54,9 +54,3 @@ int	mouse_events(int button, int x, int y, t_fractal *fract)
 	fract_render(fract);
 	return (0);
 }
-
-
-
-
-
-

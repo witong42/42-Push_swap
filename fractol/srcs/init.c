@@ -6,13 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:37:48 by witong            #+#    #+#             */
-/*   Updated: 2024/09/21 09:40:05 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/22 16:24:17 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void ft_fract_init(t_fractal *fract)
+void	ft_fract_init(t_fractal *fract)
 {
 	fract->zoom = 1.0;
 	fract->shift_x = 0.0;
@@ -35,9 +35,9 @@ void	ft_mlx_init(t_fractal *fract)
 	if (!fract->img)
 		failure_close(fract);
 	fract->pxl_img = mlx_get_data_addr(fract->img,
-					&fract->bpp,
-					&fract->size_line,
-					&fract->endian);
+			&fract->bpp,
+			&fract->size_line,
+			&fract->endian);
 	if (!fract->pxl_img)
 		failure_close(fract);
 }
