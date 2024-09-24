@@ -13,7 +13,7 @@ MLX = minilibx-linux
 LIBS = -L$(MLX) -lmlx_Linux -lXext -lX11 -lm
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I ./$(MLX) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(MLX) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)

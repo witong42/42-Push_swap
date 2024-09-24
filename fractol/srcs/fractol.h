@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:10:05 by witong            #+#    #+#             */
-/*   Updated: 2024/09/23 06:40:48 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/24 12:44:26 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ so we use SIZE instead of HEIGHT and WIDTH. */
 typedef struct s_fractal
 {
 	char	*name;
-	void	*mlx; //mlx_init();
-	void	*win; //mlx_new_window();
-	void	*img; //mlx_new_image();
-	char	*pxl_img; //mlx_get_data_addr();
-	int		bpp; //bits per pixels
-	int		size_line; //where the line is written
-	int		endian; // where the endian is written
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*pxl_img;
+	int		bpp;
+	int		size_line;
+	int		endian;
 	double	shift_x;
 	double	shift_y;
 	double	zx;
