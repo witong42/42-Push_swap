@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:38:07 by witong            #+#    #+#             */
-/*   Updated: 2024/09/23 06:59:33 by witong           ###   ########.fr       */
+/*   Updated: 2024/09/24 20:07:52 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	pxl_img(t_fractal *fract, int x, int y)
 	*(unsigned int *)pixel = color;
 }
 
-// Renders the fractal image
+// Renders the fractal image using mlx_put_image_to_window instead of mlx_pixel_put
 void	fract_render(t_fractal *fract)
 {
 	int	x;
