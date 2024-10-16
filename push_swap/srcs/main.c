@@ -6,34 +6,43 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/01 09:25:12 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/15 20:55:48 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+void	multiple_args(int ac, char **av, t_stack **a)
+{
+	int	i;
+	int	value;
+	t_stack *new_node;
 
-You have to write a program named push_swap that takes as an argument the stack
-a formatted as a list of integers. The first argument should be at the top of the
-stack (be careful about the order).
-•The program must display the smallest list of instructions possible to sort the stack
-a, the smallest number being at the top.
-•Instructions must be separated by a ’\n’ and nothing else
-
-
-declare variables for stack a and stack b
-		set to NULL
-		split
-		atoi
+	i = 1;
+	while (i < ac)
+	{
+		value = ft_atoi(av[i]);
+		new_node = ft_lstd_new(value);
+		ft_lstd_add_back(a, new_node);
+		i++;
+	}
+}
 
 int	main(int ac, char **av)
 {
-	if (ac == 2)
-	{
-		init_a
-		check if 2 or 3
-		check if 5
-		more than 5
-			binary radix sort
-	}
+	t_stack *a;
+	t_stack *b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || !av[1][0])
+		return (1);
+	else if (ac == 2)
+		a = atolist(av[1]);
+	else if (ac >= 3)
+		multiple_args(ac, av, &a);
+	// filter duplicates and lettre
+	print_list(a);
 	return (0);
 }
+//cc main.c utils.c lstd.c -L../libft -lft
