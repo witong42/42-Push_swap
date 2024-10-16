@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/15 20:16:07 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/16 09:59:16 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_stack	*ft_lstd_last(t_stack *lst);
 int		ft_lstdsize(t_stack *lst);
 void	ft_lstd_add_front(t_stack **lst, t_stack *front);
 void	ft_lstd_add_back(t_stack **lst, t_stack *back);
+
+// input_check.c
 
 // init.c
 

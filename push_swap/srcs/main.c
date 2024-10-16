@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/15 20:55:48 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/16 09:56:44 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-	if (ac == 1 || !av[1][0])
+	if (ac < 2 || !av[1][0])
 		return (1);
 	else if (ac == 2)
 		a = atolist(av[1]);
 	else if (ac >= 3)
 		multiple_args(ac, av, &a);
-	// filter duplicates and lettre
 	print_list(a);
 	return (0);
 }
