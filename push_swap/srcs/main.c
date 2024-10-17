@@ -6,14 +6,14 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 19:13:03 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 19:24:24 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Return 1 if stack is already sorted.
-static int	is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	while (stack->next != NULL)
 	{
@@ -45,10 +45,10 @@ int	main(int ac, char **av)
 	t_stack	*b;
 
 	if (ac < 2)
-		return (ft_putstr_fd("Error: ./push_swap [numbers...]\n", 2), 1);
+		return (1);
 	a = init_stack(ac, av);
 	if (!a)
-		return (ft_putstr_fd("Error: Invalid input\n", 2), 1);
+		handle_error(NULL, &a, NULL);
 	b = NULL;
 	if (!is_sorted(a))
 		sort_stack(a, b);

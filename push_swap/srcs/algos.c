@@ -31,12 +31,12 @@ void	algo_sort(t_stack **a, t_stack **b)
 {
 	int	stack_size;
 
-	stack_size = ft_lstd_size(&a);
-	while (stack_size-- > a && !stack_sorted(*a))
-		pb(&b, &a);
+	stack_size = ft_lstd_size(*a);
+	while (stack_size-- > a && !is_sorted(*a))
+		pb(b, a);
 	small_sort(a);
 	while (*b)
-		pa(&a, &b);
+		pa(a, b);
 }
 
 /*
