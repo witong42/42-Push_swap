@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:32:09 by witong            #+#    #+#             */
-/*   Updated: 2024/10/15 20:16:44 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 04:58:30 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*ft_lstd_new(int value)
 	return (lst);
 }
 
-int	ft_lstdsize(t_stack *lst)
+int	ft_lstd_size(t_stack *lst)
 {
 	int	i;
 
@@ -82,19 +82,3 @@ void	ft_lstd_add_back(t_stack **lst, t_stack *back)
 	last->next = back;
 	back->prev = last;
 }
-
-
-
-/*
-int main (void)
-{
-	t_stack *node00;
-	t_stack node01;
-	t_stack node02;
-
-	node00 = ft_lstdnew(42);
-
-	printf ("Node 0 , value %d", node00->value);
-
-}
-*/

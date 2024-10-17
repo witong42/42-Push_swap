@@ -6,39 +6,11 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/15 20:41:24 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 06:05:37 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*atolist(const char *str)
-{
-	t_stack	*head;
-	t_stack	*new_node;
-	const char	*start;
-	const char	*end;
-	int		value;
-
-	head = NULL;
-	start = str;
-	while (*start)
-	{
-		while (*start == ' ')
-			start++;
-		if (*start == '\0')
-			break ;
-		end = start;
-		while (*end && *end != ' ')
-			end++;
-		value = ft_atoi(start);
-		new_node = ft_lstd_new(value);
-		ft_lstd_add_back(&head, new_node);
-		start = end;
-	}
-	return (head);
-}
-
 
 void	print_list(t_stack *head)
 {
@@ -48,4 +20,29 @@ void	print_list(t_stack *head)
 		ft_printf("%d\n", lst->value);
 		lst = lst->next;
 	}
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+void	handle_error(t_stack **a, t_stack **b)
+{
+	if (a == NULL || *a != NULL)
+		free_stack(stack_a);
+	if (b == NULL || *b != NULL)
+		free_stack(stack_b);
+	ft_putstr_fd("Error\n", 2)
+	exit (1);
 }

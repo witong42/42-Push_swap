@@ -6,42 +6,47 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/16 09:56:44 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 06:09:46 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	multiple_args(int ac, char **av, t_stack **a)
+// Return 1 if stack is already sorted.
+static int	is_sorted(t_stack *stack)
 {
-	int	i;
-	int	value;
-	t_stack *new_node;
-
-	i = 1;
-	while (i < ac)
+	while (stack->next != NULL)
 	{
-		value = ft_atoi(av[i]);
-		new_node = ft_lstd_new(value);
-		ft_lstd_add_back(a, new_node);
-		i++;
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
 	}
+	return (1);
 }
 
-int	main(int ac, char **av)
+static void	sort_stack(t_stack *a, t_stack *b, int stack_size)
 {
-	t_stack *a;
-	t_stack *b;
 
-	a = NULL;
-	b = NULL;
-	if (ac < 2 || !av[1][0])
-		return (1);
-	else if (ac == 2)
-		a = atolist(av[1]);
-	else if (ac >= 3)
-		multiple_args(ac, av, &a);
-	print_list(a);
-	return (0);
 }
-//cc main.c utils.c lstd.c -L../libft -lft
+
+int main(int ac, char **av)
+{
+    t_stack	*a;
+    t_stack	*b;
+	int		stack_size;
+
+    if (argc < 2)
+        return (ft_putstr_fd("Error: ./push_swap [numbers...]\n", 2), 1);
+	if (!valid_args(av))
+		return (ft_putstr_fd("Error: Invalid input\n", 2), 1);
+    a = init_stack(ac, av);
+    if (!a)
+        return (ft_putstr_fd("Error: Invalid input\n", 2), 1);
+    b = NULL;
+	stack_size = ft_lstd_size(a);
+    if (!is_sorted(a))
+        sort_stack(a, b, stack_size);
+    free_stack(&a);
+    free_stack(&b);
+    return (0);
+}

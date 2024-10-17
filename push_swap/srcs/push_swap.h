@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/16 09:59:16 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 05:56:52 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 # include "../libft/inc/libft.h"
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line.h"
@@ -51,19 +52,19 @@ void	rrr(t_stack *a, t_stack *b);
 t_stack	*ft_lstd_new(int value);
 t_stack	*ft_lstd_first(t_stack *lst);
 t_stack	*ft_lstd_last(t_stack *lst);
-int		ft_lstdsize(t_stack *lst);
+int		ft_lstd_size(t_stack *lst);
 void	ft_lstd_add_front(t_stack **lst, t_stack *front);
 void	ft_lstd_add_back(t_stack **lst, t_stack *back);
 
-// input_check.c
+// parsing.c
+t_stack *parse_args(int argc, char **argv);
 
 // init.c
 
-// errors.c
-
 // utils.c
-t_stack	*atolist(const char *str);
 void	print_list(t_stack *lst);
+void	free_stack(t_stack **stack);
+
 // algo.c
 
 // simplealgo.c
