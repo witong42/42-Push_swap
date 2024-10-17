@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 07:12:11 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 09:50:17 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ t_stack	*init_stack(int ac, char **av);
 // init.c
 
 // utils.c
-void	print_list(t_stack *lst);
-void	free_stack(t_stack **stack);
-void	free_args(char **args);
-void	handle_error(char **args, t_stack **a, t_stack **b);
+void		print_list(t_stack *lst);
+void		free_stack(t_stack **stack);
+void		free_args(char **args);
+void		handle_error(char **args, t_stack **a, t_stack **b);
+long int	ft_atol(const char *str);
+
 // algo.c
 
 // simplealgo.c

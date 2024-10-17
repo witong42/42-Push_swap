@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 07:16:12 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 09:49:31 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_list(t_stack *head)
 {
 	t_stack	*lst;
-	
+
 	lst = head;
 	while (lst != NULL)
 	{
@@ -38,8 +38,6 @@ void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
-
-#include <stdlib.h>
 
 void	free_args(char **args)
 {
@@ -66,4 +64,26 @@ void	handle_error(char **args, t_stack **a, t_stack **b)
 		free_stack(b);
 	ft_putstr_fd("Error\n", 2);
 	exit (1);
+}
+long int	ft_atol(const char *str)
+{
+	long int	res;
+	int			sign;
+	int			i;
+
+	res = 0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		res = (res * 10) + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

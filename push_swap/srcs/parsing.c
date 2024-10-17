@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:00:01 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 07:11:19 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 09:43:52 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	process_args(t_stack **stack, const char *arg)
 	{
 		if (!is_valid_number(split_args[i]))
 			handle_error(split_args, stack, NULL);
-		nb = ft_atoi(split_args[i]);
+		nb = ft_atol(split_args[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			handle_error(split_args, stack, NULL);
 		new_node = ft_lstd_new((int)nb);
