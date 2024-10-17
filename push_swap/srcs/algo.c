@@ -29,5 +29,20 @@ void	small_sort(t_stack **stack)
 
 void	algo_sort(t_stack **a, t_stack **b)
 {
-	
+	int	stack_size;
+
+	stack_size = ft_lstd_size(&a);
+	while (stack_size-- > a && !stack_sorted(*a))
+		pb(&b, &a);
+	small_sort(a);
+	while (*b)
+		pa(&a, &b);
 }
+
+/*
+    Find the smallest number in Stack A.-
+    Move the smallest number found to the top of Stack A.
+    Push that number to Stack B.
+    Repeat steps 1–3 until Stack A is empty.
+    Push everything back to stack A once Stack B has all the numbers from biggest to smallest.
+*/
