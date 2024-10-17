@@ -26,3 +26,8 @@ void	small_sort(t_stack **stack)
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }
+
+void	algo_sort(t_stack **a, t_stack **b)
+{
+	
+}

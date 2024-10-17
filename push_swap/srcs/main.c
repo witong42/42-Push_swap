@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 14:44:22 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 18:27:26 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	sort_stack(t_stack *a, t_stack *b, int stack_size)
 		sa(&a);
 	else if (stack_size == 3)
 		small_sort(&a);
-//	else
-//		turk(a, b, stack_size);
+	else
+		algo_sort(&a, &b);
 }
 
 // Check args, init a and b, call the sorting function, free and exit.
