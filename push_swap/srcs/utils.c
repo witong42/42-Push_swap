@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 06:05:37 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 07:16:12 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	print_list(t_stack *head)
 {
-	t_stack *lst = head;
+	t_stack	*lst;
+	
+	lst = head;
 	while (lst != NULL)
 	{
 		ft_printf("%d\n", lst->value);
@@ -37,12 +39,31 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	handle_error(t_stack **a, t_stack **b)
+#include <stdlib.h>
+
+void	free_args(char **args)
 {
+    int	i;
+
+    if (!args)
+        return ;
+    i = 0;
+    while (args[i])
+    {
+        free(args[i]);
+        i++;
+    }
+    free(args);
+}
+
+void	handle_error(char **args, t_stack **a, t_stack **b)
+{
+	if (args != NULL)
+		free_args(args);
 	if (a == NULL || *a != NULL)
-		free_stack(stack_a);
+		free_stack(a);
 	if (b == NULL || *b != NULL)
-		free_stack(stack_b);
-	ft_putstr_fd("Error\n", 2)
+		free_stack(b);
+	ft_putstr_fd("Error\n", 2);
 	exit (1);
 }

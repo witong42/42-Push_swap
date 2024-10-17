@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 08:36:56 by witong            #+#    #+#             */
-/*   Updated: 2024/09/30 09:17:07 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 07:13:41 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	rotate(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -30,17 +30,17 @@ static void	rotate(t_stack **stack)
 void ra(t_list **a)
 {
 	rotate(a);
-	ft_putstr("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 void rb(t_list **b)
 {
 	rotate(b);
-	ft_putstr("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void rr(t_list **a, t_list **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_putstr("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }

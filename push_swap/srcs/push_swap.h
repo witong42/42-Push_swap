@@ -6,12 +6,12 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 05:56:52 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 07:12:11 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -21,13 +21,13 @@
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line.h"
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	int		value;
-	int		index;
+	int				value;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-}		t_stack;
+}			t_stack;
 
 // swap.c
 void	sa(t_stack *a);
@@ -57,14 +57,15 @@ void	ft_lstd_add_front(t_stack **lst, t_stack *front);
 void	ft_lstd_add_back(t_stack **lst, t_stack *back);
 
 // parsing.c
-t_stack *parse_args(int argc, char **argv);
+t_stack	*init_stack(int ac, char **av);
 
 // init.c
 
 // utils.c
 void	print_list(t_stack *lst);
 void	free_stack(t_stack **stack);
-
+void	free_args(char **args);
+void	handle_error(char **args, t_stack **a, t_stack **b);
 // algo.c
 
 // simplealgo.c

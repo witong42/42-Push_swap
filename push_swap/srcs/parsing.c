@@ -6,72 +6,90 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:00:01 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 06:02:20 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 07:11:19 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Function to check if a string contains only digits and an optional leading sign
-static int is_valid_number(const char *str)
+// Check if a string contains only digits and an optional leading sign
+static int	is_valid_number(const char *str)
 {
-    if (!*str)
-        return (0);
+	if (!*str)
+		return (0);
 	if (*str == '-' || *str == '+')
-        str++;
-    while (*str)
-    {
-        if (!ft_isdigit(*str))
-            return (0);
-        str++;
-    }
-    return (1);
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
 // Function to check for duplicate numbers in the stack
-static int has_duplicates(t_stack *stack)
+static int	has_duplicates(t_stack *stack)
 {
-    t_node *current;
-    t_node *checker;
+	t_stack	*current;
+	t_stack	*checker;
 
-    current = stack->head;
-    while (current)
-    {
-        checker = current->next;
-        while (checker)
-        {
-            if (current->value == checker->value)
-                return (1);
-            checker = checker->next;
-        }
-        current = current->next;
-    }
-    return (0);
+	current = stack;
+	while (current)
+	{
+		checker = current->next;
+		while (checker)
+		{
+			if (current->value == checker->value)
+				return (1);
+			checker = checker->next;
+		}
+		current = current->next;
+	}
+	return (0);
 }
 
-// Function to handle parsing arguments and initializing the stack
-// Returns the initialized stack or NULL if an error occurs
-t_stack *parse_args(int argc, char **argv)
+static int	process_args(t_stack **stack, const char *arg)
 {
-    t_stack *stack;
-    int i;
+	char	**split_args;
+	long	nb;
+	int		i;
+	t_stack	*new_node;
 
-    i = 1;
-    while (i < argc)
-    {
-        if (!validate_args(stack, argv[i]))
-        {
-            free_stack(stack);
-            return (NULL);
-        }
-        i++;
-    }
-    if (has_duplicates(stack))
-    {
-        free_stack(stack);
-        return (NULL);
-    }
-    return (stack);
+	split_args = ft_split(arg, ' ');
+	if (!split_args)
+		return (0);
+	i = 0;
+	while (split_args[i])
+	{
+		if (!is_valid_number(split_args[i]))
+			handle_error(split_args, stack, NULL);
+		nb = ft_atoi(split_args[i]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			handle_error(split_args, stack, NULL);
+		new_node = ft_lstd_new((int)nb);
+		if (!new_node)
+			handle_error(split_args, stack, NULL);
+		ft_lstd_add_back(stack, new_node);
+		i++;
+	}
+	return (free_args(split_args), 1);
 }
 
+t_stack	*init_stack(int ac, char **av)
+{
+	t_stack	*stack;
+	int		i;
 
+	stack = NULL;
+	i = 1;
+	while (i < ac)
+	{
+		if (!process_args(&stack, av[i]))
+			handle_error(NULL, &stack, NULL);
+		i++;
+	}
+	if (has_duplicates(stack))
+		handle_error(NULL, &stack, NULL);
+	return (stack);
+}
