@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 09:49:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 10:01:34 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	free_stack(t_stack **stack)
 
 void	free_args(char **args)
 {
-    int	i;
+	int	i;
 
-    if (!args)
-        return ;
-    i = 0;
-    while (args[i])
-    {
-        free(args[i]);
-        i++;
-    }
-    free(args);
+	if (!args)
+		return ;
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }
 
 void	handle_error(char **args, t_stack **a, t_stack **b)
@@ -65,9 +65,10 @@ void	handle_error(char **args, t_stack **a, t_stack **b)
 	ft_putstr_fd("Error\n", 2);
 	exit (1);
 }
-long int	ft_atol(const char *str)
+
+long	ft_atol(const char *str)
 {
-	long int	res;
+	long	res;
 	int			sign;
 	int			i;
 

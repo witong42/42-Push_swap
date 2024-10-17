@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 08:36:52 by witong            #+#    #+#             */
-/*   Updated: 2024/10/01 08:11:21 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 10:06:01 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ static void	reverse(t_stack **stack)
 void	rra(t_stack **a)
 {
 	reverse(a);
-	ft_putstr("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_stack **b)
 {
 	reverse(b);
-	ft_putstr("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
 	reverse(a);
 	reverse(b);
-	ft_putstr("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }
