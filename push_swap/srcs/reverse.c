@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 08:36:52 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:06:01 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 11:53:34 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	reverse(t_stack **stack)
 {
-	t_stack	first;
-	t_stack	last;
-	t_stack current;
+	t_stack	*first;
+	t_stack	*last;
+	t_stack	*current;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (!*stack || !*stack)
 		return ;
 	first = *stack;
 	last = *stack;

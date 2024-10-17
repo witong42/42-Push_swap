@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:32:09 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 04:58:30 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 10:46:47 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ t_stack	*ft_lstd_new(int value)
 
 int	ft_lstd_size(t_stack *lst)
 {
-	int	i;
+	int	size;
 
-	i = 0;
-	while (lst)
-		lst = lst->prev;
+	size = 0;
 	while (lst)
 	{
 		lst = lst->next;
-		i++;
+		size++;
 	}
-	return (i);
+	return (size);
 
 }
 t_stack	*ft_lstd_first(t_stack *lst)

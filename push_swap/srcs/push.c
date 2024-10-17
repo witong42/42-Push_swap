@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 08:37:04 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:05:06 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 11:45:40 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	push(t_stack **src, t_stack **dst)
 	*src = tmp;
 }
 
-void pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b)
 {
 	push(b, a);
 	ft_putstr_fd("pa\n", 1);
 }
-void pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
 	push(a, b);
 	ft_putstr_fd("pb\n", 1);

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:07:13 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 13:41:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ typedef struct s_stack
 }			t_stack;
 
 // swap.c
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
 
 // push.c
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
 
 // rotate.c
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
 
 // reverse.c
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
 // lstd.c
 t_stack	*ft_lstd_new(int value);
@@ -60,7 +60,7 @@ void	ft_lstd_add_back(t_stack **lst, t_stack *back);
 t_stack	*init_stack(int ac, char **av);
 
 // utils.c
-void	print_list(t_stack *lst);
+void	print_stack(t_stack *lst);
 void	free_stack(t_stack **stack);
 void	free_args(char **args);
 void	handle_error(char **args, t_stack **a, t_stack **b);

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 03:50:57 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:06:39 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/17 10:38:21 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void swap(t_stack *stack)
 {
 	int	tmp;
 
-	if(stack == NULL || stack_next == NULL)
+	if(stack == NULL || stack->next == NULL)
 		return ;
 	tmp = stack->value;
 	stack->value = stack->next->value;
