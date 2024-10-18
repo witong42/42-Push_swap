@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 19:24:24 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/18 07:35:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,27 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+static void	assign_index(t_stack *a)
+{
+	t_stack	*current;
+	int		index;
+
+	current = a;
+	index = 0;
+	while (current != NULL)
+	{
+		current->index = index;
+		index++;
+		current = current->next;
+	}
+}
+
 // Sorting method based on numbers of value to be sorted
-static void	sort_stack(t_stack *a, t_stack *b)
+void	sort_stack(t_stack *a, t_stack *b)
 {
 	int stack_size;
 
+	(void)b;
 	stack_size = ft_lstd_size(a);
 	if (stack_size == 2)
 		sa(&a);
@@ -46,14 +62,15 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (1);
+	b = NULL;
 	a = init_stack(ac, av);
 	if (!a)
 		handle_error(NULL, &a, NULL);
-	b = NULL;
+	assign_index(a);
 	if (!is_sorted(a))
 		sort_stack(a, b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
 }
-// cc -Wall -Werror -Wextra main.c parsing.c utils.c lstd.c -L../libft -lft
+// cc -Wall -Werror -Wextra main.c parsing.c utils.c lstd.c push.c reverse.c rotate.c swap.c -L../libft -lft

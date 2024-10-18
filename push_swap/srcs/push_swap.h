@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 19:20:40 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/18 08:25:38 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	handle_error(char **args, t_stack **a, t_stack **b);
 long	ft_atol(const char *str);
 
 // main.c
-int	is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack);
+void	small_sort(t_stack **stack);
 
 // algo.c
-void	small_sort(t_stack **stack);
 
 
 #endif
