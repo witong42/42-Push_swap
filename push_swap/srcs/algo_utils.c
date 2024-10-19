@@ -6,26 +6,30 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 16:20:07 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:12:17 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_smallest(t_stack *(*stack))
+t_stack	*find_smallest(t_stack *stack)
 {
-	int		min;
-	t_stack	*current;
+	long			smallest;
+	t_stack	*smallest_node;
 
-	current = stack;
-	min = current->value;
-	while (current)
+	if (!stack)
+		return (NULL);
+	smallest = LONG_MAX;
+	while (stack)
 	{
-		if (min > current->value)
-			min = current->value;
-		current = current->next;
+		if (stack->value < smallest)
+		{
+			smallest = stack->value;
+			smallest_node = stack;
+		}
+		stack = stack->next;
 	}
-	return (min);
+	return (smallest_node);
 }
 
 int	find_biggest(t_stack *stack)
@@ -64,40 +68,13 @@ int	find_nearest(int value, t_stack *stack)
 	}
 	return (nearest);
 }
-
-int	*find_biggest_ptr(t_stack **stack)
+t_stack	*find_best_move(t_stack *stack)
 {
-	int		max;
-	t_stack	*current;
-
-	current = (*stack);
-	max = current->value;
-	while (current)
+	while (stack)
 	{
-		if (max < current->value)
-			max = current->value;
-		current = current->next;
+		if (stack->best_move)
+			return (stack);
+		stack = stack->next;
 	}
-	return (max);
-}
-
-int	*find_nearest_ptr(int value, t_stack **stack)
-{
-	int	*nearest;
-	int	*diff;
-
-	nearest = (*stack)->value;
-	diff = abs(value - (*stack)->value);
-	(*stack) = (*stack)->next;
-
-	while (*stack)
-	{
-		if (abs(value - (*stack)->value) < diff)
-		{
-			diff = abs(value - (*stack)->value);
-			nearest = (*stack)->value;
-		}
-		(*stack) = (*stack)->next;
-	}
-	return (nearest);
+	return (NULL);
 }

@@ -6,13 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 15:17:47 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:21:38 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	small_sort(t_stack **a)
+void	sort_three(t_stack **a)
 {
 	if ((*a)->value > (*a)->next->value
 		|| (*a)->next->value < (*a)->next->next->value)
@@ -24,7 +24,7 @@ void	small_sort(t_stack **a)
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
 }
-void	init_b(t_stack **a, t_stack **b)
+static void	init_b(t_stack **a, t_stack **b)
 {
 	pb(a, b);
 	pb(a, b);
@@ -32,15 +32,66 @@ void	init_b(t_stack **a, t_stack **b)
 		rb(b);
 }
 
+void	init_nodes(t_stack *a, t_stack *b)
+{
+	set_current_index(a);
+	set_current_index(b);
+	set_target(a, b);
+	set_cost(a, b);
+	set_best_move(b);
+}
+
+void	push_to_b(t_stack **a, t_stack **b)
+{
+	int stack_size;
+    int i;
+
+    i = 0;
+    stack_size = ft_lstd_size(*a);
+    while (stack_size - i > 3)
+    {
+        if (find_nearest((*a)->value, *a))
+			pb(a, b);
+		else
+			ra(a);
+		stack_size = ft_lstd_size(*a);
+    }
+}
+void	push_to_a(t_stack **a, t_stack **b)
+{
+	t_stack	*best_move;
+
+	best_move = find_best_move(*b);
+	if (best_move->above_mid
+		&& best_move->target->above_mid)
+		rotate_both(a, b, best_move);
+	else if (!(best_move->above_mid)
+		&& !(best_move->target->above_mid))
+		reverse_rotate_both(a, b, best_move);
+	finish_rotation(b, best_move, 'b');
+	finish_rotation(a, best_move->target, 'a');
+	pa(a, b);
+}
 
 void algo_sort(t_stack **a, t_stack **b)
 {
-	t_stack *cheapest_node;
+	t_stack *best_move;
 
 	init_b(a, b);
 	push_to_b(a, b);
 	if (!is_sorted(*a))
-		small_sort(*a);
+		sort_three(a);
+	while (*b)
+	{
+	init_nodes(*a, *b);
 	push_to_a(a, b);
-	cheapest_node = 
+	}
+	set_current_index(*a);
+	best_move = find_smallest(*a);
+	if (best_move->above_mid)
+		while (*a != best_move)
+			ra(a);
+	else
+		while (*a != best_move)
+			rra(a);
 }

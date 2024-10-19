@@ -6,41 +6,94 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 17:01:05 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:18:37 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	push_to_b(t_stack **a, t_stack **b)
-{
-	int stack_size;
-    int i;
+#include "push_swap.h"
 
-    i = 0;
-    stack_size = ft_lstd_size(*a);
-    while (stack_size - i > 3)
-    {
-        if ((*a)->value < find_nearest(a))
-			pb(a, b);
+void	set_current_index(t_stack *stack)
+{
+	int	i;
+	int	middle;
+
+	i = 0;
+	if (!stack)
+		return ;
+	middle = ft_lstd_size(stack) / 2;
+	while (stack)
+	{
+		stack->index = i;
+		stack->above_mid = (i <= middle);
+		stack = stack->next;
+		++i;
+	}
+}
+
+void	set_target(t_stack *a, t_stack *b)
+{
+	t_stack	*current;
+	t_stack	*target;
+	long	best_index;
+
+	while (b)
+	{
+		best_index = LONG_MAX;
+		target = NULL;
+		current = a;
+		while (current)
+		{
+			if (current->value > b->value && current->value < best_index)
+			{
+				best_index = current->value;
+				target = current;
+			}
+			current = current->next;
+		}
+		if (LONG_MAX == best_index)
+			b->target = find_smallest(a);
 		else
-			ra(a);
-		stack_size = ft_lstd_size(*a);
-    }
+			b->target = target;
+		b = b->next;
+	}
 }
-void	push_to_a(t_stack **a, t_stack **b)
-{
-	t_stack *best_move;
 
-	while (*b)
+void	set_cost(t_stack *a, t_stack *b)
+{
+	int	size_a;
+	int	size_b;
+
+	size_a = ft_lstd_size(a);
+	size_b = ft_lstd_size(b);
+	while (b)
 	{
-		best_move = find_best_move(*a, *b);
-		perform_best_move(a, b, best_move);
-		pa(b, a);
+		b->cost = b->index;
+		if (!(b->above_mid))
+			b->cost = size_b - (b->index);
+		if (b->target->above_mid)
+			b->cost += b->target->index;
+		else
+			b->cost += size_a - (b->target->index);
+		b = b->next;
 	}
 }
-int	target(t_stack *a, t_stack *b)
+
+void	set_best_move(t_stack *b)
 {
-	while (a)
+	long			best_value;
+	t_stack	*best_node;
+
+	if (NULL == b)
+		return ;
+	best_value = LONG_MAX;
+	while (b)
 	{
-		
+		if (b->cost < best_value)
+		{
+			best_value = b->cost;
+			best_node = b;
+		}
+		b = b->next;
 	}
+	best_node->best_move = true;
 }

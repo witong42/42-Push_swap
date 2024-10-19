@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 12:04:40 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:41:29 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_sorted(t_stack *stack)
 }
 
 // Sorting method based on numbers of value to be sorted
-static void	sort_stack(t_stack **a, t_stack **b)
+static void	push_swap(t_stack **a, t_stack **b)
 {
 	int stack_size;
 
@@ -34,7 +34,7 @@ static void	sort_stack(t_stack **a, t_stack **b)
 	if (stack_size == 2)
 		sa(a);
 	else if (stack_size == 3)
-		small_sort(a);
+		sort_three(a);
 	else
 		algo_sort(a, b);
 }
@@ -52,9 +52,9 @@ int	main(int ac, char **av)
 	if (!a)
 		handle_error(NULL, &a, NULL);
 	if (!is_sorted(a))
-		sort_stack(&a, &b);
+		push_swap(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
 }
-// cc -Wall -Werror -Wextra main.c parsing.c utils.c lstd.c push.c reverse.c rotate.c swap.c -L../libft -lft
+// cc -Wall -Werror -Wextra main.c parsing.c utils.c lstd.c push.c reverse.c rotate.c swap.c algo.c algo_utils.c algo_utils2.c algo_utils3.c -L../libft -lft

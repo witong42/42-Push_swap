@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 11:14:23 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:20:25 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "../libft/inc/libft.h"
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line.h"
@@ -25,6 +26,10 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				cost;
+	bool			above_mid;
+	bool			best_move;
+	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }			t_stack;
@@ -70,21 +75,26 @@ long	ft_atol(const char *str);
 int		is_sorted(t_stack *stack);
 
 // algo.c
-void	small_sort(t_stack **a);
-void	sort_middle(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a);
+void	set_target(t_stack *a, t_stack *b);
 void	push_to_b(t_stack **a, t_stack **b);
 void	algo_sort(t_stack **a, t_stack **b);
 
 // algo_utils.c
-int		find_smallest(t_stack *a);
+t_stack	*find_smallest(t_stack *stack);
 int		find_largest(t_stack *a);
-int		find_middle(t_stack *a);
-int		calculate_optimal_rotation(t_stack *stack, int target_index);
-void	optimize_rotation(t_stack **a, t_stack **b, int target_index_a, int target_index_b);
+int		find_nearest(int value, t_stack *stack);
+t_stack	*find_best_move(t_stack *stack);
 
 //algo_utils2.c
-void	assign_index(t_stack **a, t_stack **b);
-int		find_insert_position(t_stack *a, int value);
-void	align_stack(t_stack **a);
+void	set_current_index(t_stack *stack);
+void	set_cost(t_stack *a, t_stack *b);
+void	set_best_move(t_stack *b);
+void	init_nodes(t_stack *a, t_stack *b);
+
+// algo_utils3.c
+void	rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
+void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
+void	finish_rotation(t_stack **stack, t_stack *top_node, char stack_name);
 
 #endif
