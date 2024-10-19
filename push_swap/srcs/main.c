@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 10:56:57 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 12:04:40 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,18 @@ int	is_sorted(t_stack *stack)
 }
 
 // Sorting method based on numbers of value to be sorted
-static void	sort_stack(t_stack *a, t_stack *b)
+static void	sort_stack(t_stack **a, t_stack **b)
 {
 	int stack_size;
 
 	(void)b;
-	stack_size = ft_lstd_size(a);
+	stack_size = ft_lstd_size(*a);
 	if (stack_size == 2)
-		sa(&a);
+		sa(a);
 	else if (stack_size == 3)
-		small_sort(&a);
+		small_sort(a);
 	else
-		algo_sort(&a, &b);
-
+		algo_sort(a, b);
 }
 
 // Check args, init a and b, call the sorting function, free and exit.
@@ -53,7 +52,7 @@ int	main(int ac, char **av)
 	if (!a)
 		handle_error(NULL, &a, NULL);
 	if (!is_sorted(a))
-		sort_stack(a, b);
+		sort_stack(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

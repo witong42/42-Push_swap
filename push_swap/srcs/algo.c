@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 11:39:28 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 11:56:29 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void sort_middle(t_stack **a, t_stack **b)
 		else
 			ra(a);
 		i++;
-//		stack_size = ft_lstd_size(*a);
+		stack_size = ft_lstd_size(*a);
 	}
 }
 
@@ -56,6 +56,7 @@ void	push_to_b(t_stack **a, t_stack **b)
     {
         pb(a, b);
         i++;
+		stack_size = ft_lstd_size(*a);
     }
     small_sort(a);
 }
