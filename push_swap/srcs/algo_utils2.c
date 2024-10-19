@@ -1,62 +1,46 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_utils2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
+/*   Updated: 2024/10/19 17:01:05 by witong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void assign_index(t_stack **a, t_stack **b)
+void	push_to_b(t_stack **a, t_stack **b)
 {
-    t_stack *current;
-    int index;
+	int stack_size;
+    int i;
 
-    current = *a;
-    index = 0;
-    while (current)
+    i = 0;
+    stack_size = ft_lstd_size(*a);
+    while (stack_size - i > 3)
     {
-        current->index = index;
-        current = current->next;
-        index++;
-    }
-    current = *b;
-    index = 0;
-    while (current)
-    {
-        current->index = index;
-        current = current->next;
-        index++;
+        if ((*a)->value < find_nearest(a))
+			pb(a, b);
+		else
+			ra(a);
+		stack_size = ft_lstd_size(*a);
     }
 }
-
-int find_insert_position(t_stack *a, int value)
+void	push_to_a(t_stack **a, t_stack **b)
 {
-    int position;
-    t_stack *current;
+	t_stack *best_move;
 
-    position = 0;
-    current = a;
-    while (current && current->next)
-    {
-        if (current->value < value && current->next->value > value)
-            break;
-        position++;
-        current = current->next;
-    }
-    return position;
+	while (*b)
+	{
+		best_move = find_best_move(*a, *b);
+		perform_best_move(a, b, best_move);
+		pa(b, a);
+	}
 }
-
-void align_stack(t_stack **a)
+int	target(t_stack *a, t_stack *b)
 {
-    int min_index;
-    int rotate;
-    t_stack *current;
-
-    min_index = INT_MAX;
-    current = *a;
-    while (current != NULL)
-    {
-        if (current->index < min_index)
-            min_index = current->index;
-        current = current->next;
-    }
-    rotate = calculate_optimal_rotation(*a, min_index);
-    while (rotate > 0 && rotate--)
-        ra(a);
-    while (rotate < 0 && rotate++)
-        rra(a);
+	while (a)
+	{
+		
+	}
 }

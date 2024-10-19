@@ -6,20 +6,20 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 10:24:18 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 16:20:07 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_smallest(t_stack *a)
+int	find_smallest(t_stack *(*stack))
 {
 	int		min;
 	t_stack	*current;
 
-	current = a;
+	current = stack;
 	min = current->value;
-	while (current != NULL)
+	while (current)
 	{
 		if (min > current->value)
 			min = current->value;
@@ -28,14 +28,14 @@ int	find_smallest(t_stack *a)
 	return (min);
 }
 
-int	find_largest(t_stack *a)
+int	find_biggest(t_stack *stack)
 {
 	int		max;
 	t_stack	*current;
 
-	current = a;
+	current = stack;
 	max = current->value;
-	while (current != NULL)
+	while (current)
 	{
 		if (max < current->value)
 			max = current->value;
@@ -44,45 +44,60 @@ int	find_largest(t_stack *a)
 	return (max);
 }
 
-int	find_middle(t_stack *a)
+int	find_nearest(int value, t_stack *stack)
 {
-	int		min;
+	int	nearest;
+	int	diff;
+
+	nearest = stack->value;
+	diff = abs(value - stack->value);
+	stack = stack->next;
+
+	while (stack)
+	{
+		if (abs(value - stack->value) < diff)
+		{
+			diff = abs(value - stack->value);
+			nearest = stack->value;
+		}
+		stack = stack->next;
+	}
+	return (nearest);
+}
+
+int	*find_biggest_ptr(t_stack **stack)
+{
 	int		max;
+	t_stack	*current;
 
-	min = find_smallest(a);
-	max = find_largest(a);
-
-	return ((min + max) / 2);
+	current = (*stack);
+	max = current->value;
+	while (current)
+	{
+		if (max < current->value)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
 }
 
-int	calculate_optimal_rotation(t_stack *stack, int target_index)
+int	*find_nearest_ptr(int value, t_stack **stack)
 {
-	int	stack_size;
-	int	mid_point;
+	int	*nearest;
+	int	*diff;
 
-	stack_size = ft_lstd_size(stack);
-	mid_point = stack_size / 2;
+	nearest = (*stack)->value;
+	diff = abs(value - (*stack)->value);
+	(*stack) = (*stack)->next;
 
-	if (target_index <= mid_point)
-		return (target_index);
-	return (target_index - stack_size);
-}
-
-void optimize_rotation(t_stack **a, t_stack **b, int target_index_a, int target_index_b)
-{
-	int rotate_a = calculate_optimal_rotation(*a, target_index_a);
-	int rotate_b = calculate_optimal_rotation(*b, target_index_b);
-
-	while (rotate_a > 0 && rotate_b > 0 && rotate_a-- && rotate_b--)
-		rr(a, b);
-	while (rotate_a < 0 && rotate_b < 0 && rotate_a++ && rotate_b++)
-		rrr(a, b);
-	while (rotate_a > 0 && rotate_a--)
-		ra(a);
-	while (rotate_a < 0 && rotate_a++)
-		rra(a);
-	while (rotate_b > 0 && rotate_b--)
-		rb(b);
-	while (rotate_b < 0 && rotate_b++)
-		rrb(b);
+	while (*stack)
+	{
+		if (abs(value - (*stack)->value) < diff)
+		{
+			diff = abs(value - (*stack)->value);
+			nearest = (*stack)->value;
+		}
+		(*stack) = (*stack)->next;
+	}
+	return (nearest);
 }
