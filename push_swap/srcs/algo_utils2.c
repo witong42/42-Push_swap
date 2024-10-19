@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 20:18:37 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 20:49:32 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	set_cost(t_stack *a, t_stack *b)
 
 void	set_best_move(t_stack *b)
 {
-	long			best_value;
+	long	best_value;
 	t_stack	*best_node;
 
 	if (NULL == b)
