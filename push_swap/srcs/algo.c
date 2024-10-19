@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
+/*   Updated: 2024/10/19 11:39:28 by witong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	small_sort(t_stack **a)
@@ -13,46 +25,60 @@ void	small_sort(t_stack **a)
 		sa(a);
 }
 
-static void	ft_sort_b(t_stack **a, t_stack **b)
+void sort_middle(t_stack **a, t_stack **b)
 {
-	int	stack_size;
-	int	i;
+    int middle_value;
+    int stack_size;
+    int i;
 
 	i = 0;
-	stack_size = ft_lstd_size(a);
-	while (i < stack_size / 2)
+	stack_size = ft_lstd_size(*a);
+	middle_value = find_middle(*a);
+	while (*a && stack_size / 2 > i)
 	{
-		if ((*a)->value <= (stack_size / 2))
-		{
+		if ((*a)->value <= middle_value)
 			pb(a, b);
-			i++;
-		}
 		else
 			ra(a);
-	}
-	while (stack_size - i > 3)
-	{
-		pb(a, b);
 		i++;
+//		stack_size = ft_lstd_size(*a);
 	}
 }
 
-static void align_stack(t_stack **a)
+void	push_to_b(t_stack **a, t_stack **b)
 {
-	(void)a;
+    int stack_size;
+    int i;
+
+    i = 0;
+    stack_size = ft_lstd_size(*a);
+    while (stack_size - i > 3)
+    {
+        pb(a, b);
+        i++;
+    }
+    small_sort(a);
 }
 
-void	algo_sort(t_stack **a, t_stack **b)
+void algo_sort(t_stack **a, t_stack **b)
 {
-	int cost_b;
+    int target_index_a;
+    int target_index_b;
 
-	ft_sort_b(a, b);
-	small_sort(a);
-	while (*b)
+    target_index_a = 0;
+    target_index_b = 0;
+    sort_middle(a, b);
+    assign_index(a, b);
+    optimize_rotation(a, b, target_index_a, target_index_b);
+    push_to_b(a, b);
+    while (*b)
     {
-        cost_b = calculate_best_cost(*b, *a);
-        rotate_and_push(a, b, cost_b);
+        target_index_a = find_insert_position(*a, (*b)->value);
+        target_index_b = (*b)->index;
+        optimize_rotation(a, b, target_index_a, target_index_b);
+        pa(a, b);
     }
-	if (!is_sorted(*a))
-    	align_stack(a);
+
+    if (!is_sorted(*a))
+        align_stack(a);
 }

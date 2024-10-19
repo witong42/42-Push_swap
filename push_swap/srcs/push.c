@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 08:37:04 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 11:45:40 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 11:06:21 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
-	if (*src == NULL || *dst == NULL)
+	if (*src == NULL)
 		return ;
 	tmp = (*src)->next;
 	(*src)->next = *dst;

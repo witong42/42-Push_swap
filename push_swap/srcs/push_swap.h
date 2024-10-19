@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/18 08:25:38 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/19 11:14:23 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,23 @@ long	ft_atol(const char *str);
 
 // main.c
 int		is_sorted(t_stack *stack);
-void	small_sort(t_stack **stack);
 
 // algo.c
+void	small_sort(t_stack **a);
+void	sort_middle(t_stack **a, t_stack **b);
+void	push_to_b(t_stack **a, t_stack **b);
+void	algo_sort(t_stack **a, t_stack **b);
 
+// algo_utils.c
+int		find_smallest(t_stack *a);
+int		find_largest(t_stack *a);
+int		find_middle(t_stack *a);
+int		calculate_optimal_rotation(t_stack *stack, int target_index);
+void	optimize_rotation(t_stack **a, t_stack **b, int target_index_a, int target_index_b);
+
+//algo_utils2.c
+void	assign_index(t_stack **a, t_stack **b);
+int		find_insert_position(t_stack *a, int value);
+void	align_stack(t_stack **a);
 
 #endif
