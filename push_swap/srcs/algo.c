@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 07:56:16 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 08:47:51 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ void	init_nodes(t_stack *a, t_stack *b)
 void	push_to_b(t_stack **a, t_stack **b)
 {
 	int stack_size;
-    int i;
 
-    i = 0;
     stack_size = ft_lstd_size(*a);
-    while (stack_size - i > 3)
+    while (stack_size > 3)
     {
         if (find_nearest((*a)->value, *a))
 			pb(a, b);
