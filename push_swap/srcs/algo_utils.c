@@ -6,65 +6,60 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 20:48:45 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 07:54:44 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*find_smallest(t_stack *stack)
+static t_stack	*find_extreme_node(t_stack *stack, char type)
 {
-	long			smallest;
-	t_stack	*smallest_node;
+	t_stack		*extreme_node;
 
 	if (!stack)
 		return (NULL);
-	smallest = LONG_MAX;
+	extreme_node = stack;
+	stack = stack->next;
 	while (stack)
 	{
-		if (stack->value < smallest)
-		{
-			smallest = stack->value;
-			smallest_node = stack;
-		}
+		if ((type == 's' && stack->value < extreme_node->value) ||
+			(type == 'l' && stack->value > extreme_node->value))
+			extreme_node = stack;
 		stack = stack->next;
 	}
-	return (smallest_node);
+	return (extreme_node);
 }
 
-int	find_biggest(t_stack *stack)
+t_stack	*find_smallest_node(t_stack *stack)
 {
-	int		max;
-	t_stack	*current;
+	return (find_extreme_node(stack, 's'));
+}
 
-	current = stack;
-	max = current->value;
-	while (current)
-	{
-		if (max < current->value)
-			max = current->value;
-		current = current->next;
-	}
-	return (max);
+t_stack	*find_largest_node(t_stack *stack)
+{
+	return (find_extreme_node(stack, 'l'));
 }
 
 int	find_nearest(int value, t_stack *stack)
 {
 	int	nearest;
 	int	diff;
+	t_stack	*current;
 
-	nearest = stack->value;
-	diff = abs(value - stack->value);
-	stack = stack->next;
-
-	while (stack)
+	if (!stack)
+		return (0);
+	current = stack;
+	nearest = current->value;
+	diff = abs(value - current->value);
+	current = current->next;
+	while (current)
 	{
-		if (abs(value - stack->value) < diff)
+		if (abs(value - current->value) < diff)
 		{
-			diff = abs(value - stack->value);
-			nearest = stack->value;
+			diff = abs(value - current->value);
+			nearest = current->value;
 		}
-		stack = stack->next;
+		current = current->next;
 	}
 	return (nearest);
 }

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 20:21:38 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 07:56:16 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,14 @@ void	push_to_a(t_stack **a, t_stack **b)
 
 void algo_sort(t_stack **a, t_stack **b)
 {
-	t_stack *best_move;
-
 	init_b(a, b);
 	push_to_b(a, b);
 	if (!is_sorted(*a))
 		sort_three(a);
 	while (*b)
 	{
-	init_nodes(*a, *b);
-	push_to_a(a, b);
+		init_nodes(*a, *b);
+		push_to_a(a, b);
 	}
-	set_current_index(*a);
-	best_move = find_smallest(*a);
-	if (best_move->above_mid)
-		while (*a != best_move)
-			ra(a);
-	else
-		while (*a != best_move)
-			rra(a);
+	smallest_to_top(a);
 }

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 20:20:25 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 07:59:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	push_to_b(t_stack **a, t_stack **b);
 void	algo_sort(t_stack **a, t_stack **b);
 
 // algo_utils.c
-t_stack	*find_smallest(t_stack *stack);
-int		find_largest(t_stack *a);
+t_stack	*find_smallest_node(t_stack *stack);
+t_stack	*find_largest_node(t_stack *stack);
 int		find_nearest(int value, t_stack *stack);
 t_stack	*find_best_move(t_stack *stack);
 
@@ -96,5 +96,6 @@ void	init_nodes(t_stack *a, t_stack *b);
 void	rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
 void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
 void	finish_rotation(t_stack **stack, t_stack *top_node, char stack_name);
+void	smallest_to_top(t_stack **a);
 
 #endif
