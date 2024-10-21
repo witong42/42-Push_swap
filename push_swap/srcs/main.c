@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/19 20:47:21 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 12:08:23 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+void	sort_three(t_stack **a)
+{
+	if ((*a)->value > (*a)->next->value
+		|| (*a)->next->value < (*a)->next->next->value)
+		ra(a);
+	if ((*a)->value > (*a)->next->value)
+		sa(a);
+	if ((*a)->next->value > (*a)->next->next->value)
+		rra(a);
+	if ((*a)->value > (*a)->next->value)
+		sa(a);
+}
+
 // Sorting method based on numbers of value to be sorted
 static void	push_swap(t_stack **a, t_stack **b)
 {
@@ -36,7 +49,7 @@ static void	push_swap(t_stack **a, t_stack **b)
 	else if (stack_size == 3)
 		sort_three(a);
 	else
-		algo_sort(a, b);
+		custom_sort(a, b);
 }
 
 // Check args, init a and b, call the sorting function, free and exit.

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 08:02:53 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/20 10:26:10 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	set_target(t_stack *a, t_stack *b)
 			current = current->next;
 		}
 		if (LONG_MAX == best_index)
-			b->target = find_smallest_node(a);
+			b->target = find_smallest(a);
 		else
 			b->target = target;
 		b = b->next;
@@ -96,4 +96,18 @@ void	set_best_move(t_stack *b)
 		b = b->next;
 	}
 	best_node->best_move = true;
+}
+
+void	smallest_to_top(t_stack **a)
+{
+	t_stack *best_move;
+
+	set_current_index(*a);
+	best_move = find_smallest(*a);
+	if (best_move->above_mid)
+		while (*a != best_move)
+			ra(a);
+	else
+		while (*a != best_move)
+			rra(a);
 }
