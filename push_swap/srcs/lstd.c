@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:32:09 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:46:47 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:12:46 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_stack	*ft_lstd_new(int value)
 {
 	t_stack	*lst;
+
 	lst = malloc(sizeof(t_stack));
 	if (!lst)
 		return (NULL);
@@ -35,18 +36,9 @@ int	ft_lstd_size(t_stack *lst)
 		size++;
 	}
 	return (size);
-
-}
-t_stack	*ft_lstd_first(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->prev)
-		lst = lst->prev;
-	return (lst);
 }
 
-t_stack	*ft_lstd_last(t_stack *lst)
+static t_stack	*ft_lstd_last(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -55,26 +47,16 @@ t_stack	*ft_lstd_last(t_stack *lst)
 	return (lst);
 }
 
-void	ft_lstd_add_front(t_stack **lst, t_stack *front)
-{
-	if (!lst || !front)
-		return ;
-	front->next = *lst;
-	if (*lst)
-		(*lst)->prev = front;
-	*lst = front;
-}
-
 void	ft_lstd_add_back(t_stack **lst, t_stack *back)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	if (!lst || !back)
-		return;
+		return ;
 	if (!*lst)
 	{
 		*lst = back;
-		return;
+		return ;
 	}
 	last = ft_lstd_last(*lst);
 	last->next = back;

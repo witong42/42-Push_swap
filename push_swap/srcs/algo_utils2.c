@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 10:26:10 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:15:31 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	set_best_move(t_stack *b)
 
 void	smallest_to_top(t_stack **a)
 {
-	t_stack *best_move;
+	t_stack	*best_move;
 
 	set_current_index(*a);
 	best_move = find_smallest(*a);

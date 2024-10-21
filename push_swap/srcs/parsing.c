@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:00:01 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 09:43:52 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 15:43:56 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	is_valid_number(const char *str)
 {
 	if (!*str)
 		return (0);
+	while (*str == ' ' || *str == '\t')
+		str++;
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str)

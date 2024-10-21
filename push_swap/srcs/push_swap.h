@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 12:09:33 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:10:31 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	rrr(t_stack **a, t_stack **b);
 
 // lstd.c
 t_stack	*ft_lstd_new(int value);
-t_stack	*ft_lstd_first(t_stack *lst);
-t_stack	*ft_lstd_last(t_stack *lst);
 int		ft_lstd_size(t_stack *lst);
 void	ft_lstd_add_front(t_stack **lst, t_stack *front);
 void	ft_lstd_add_back(t_stack **lst, t_stack *back);
@@ -76,22 +74,20 @@ int		is_sorted(t_stack *stack);
 void	sort_three(t_stack **a);
 
 // algo.c
-void	set_target(t_stack *a, t_stack *b);
-void	push_to_b(t_stack **a, t_stack **b);
 void	custom_sort(t_stack **a, t_stack **b);
 
 // algo_utils.c
-void	set_current_index(t_stack *stack);
-void	set_cost(t_stack *a, t_stack *b);
-void	set_best_move(t_stack *b);
-void	init_nodes(t_stack *a, t_stack *b);
-void	smallest_to_top(t_stack **a);
-
-// algo_utils2.c
 void	rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
 void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *best_move);
 void	optimize_rotation(t_stack **stack, t_stack *to_push, char stack_name);
 t_stack	*find_smallest(t_stack *stack);
 t_stack	*find_best_move(t_stack *stack);
+
+// algo_utils2.c
+void	set_current_index(t_stack *stack);
+void	set_target(t_stack *a, t_stack *b);
+void	set_cost(t_stack *a, t_stack *b);
+void	set_best_move(t_stack *b);
+void	smallest_to_top(t_stack **a);
 
 #endif

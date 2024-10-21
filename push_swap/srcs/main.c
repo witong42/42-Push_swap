@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 12:08:23 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 16:54:14 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort_three(t_stack **a)
 // Sorting method based on numbers of value to be sorted
 static void	push_swap(t_stack **a, t_stack **b)
 {
-	int stack_size;
+	int	stack_size;
 
 	(void)b;
 	stack_size = ft_lstd_size(*a);
@@ -70,4 +70,3 @@ int	main(int ac, char **av)
 	free_stack(&b);
 	return (0);
 }
-// cc -Wall -Werror -Wextra main.c parsing.c utils.c lstd.c push.c reverse.c rotate.c swap.c algo.c algo_utils.c algo_utils2.c algo_utils3.c -L../libft -lft

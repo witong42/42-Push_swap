@@ -6,13 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/20 12:08:13 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:15:03 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Function to find the middle value as an approximation for splitting
+// Function to find the midpoint as an approximate median
 static int	find_middle(t_stack *stack)
 {
 	int		min;
@@ -20,44 +20,48 @@ static int	find_middle(t_stack *stack)
 	t_stack	*current;
 
 	current = stack;
-    min = current->value;
-    max = current->value;
-    while (current)
-    {
-        if (current->value < min)
-            min = current->value;
-        if (current->value > max)
-            max = current->value;
-        current = current->next;
-    }
-    return ((min + max) / 2);
+	min = current->value;
+	max = current->value;
+	while (current)
+	{
+		if (current->value < min)
+			min = current->value;
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return ((min + max) / 2);
 }
 
-// Push elements to Stack B using the middle value as a partition
+// Push elements to Stack B using the midpoint as a partition
 static void	push_to_b(t_stack **a, t_stack **b)
 {
 	int	middle;
 	int	stack_size;
 	int	i;
 
-    middle = find_middle(*a);
-    stack_size = ft_lstd_size(*a);
-    while (i < stack_size)
-    {
-        if ((*a)->value < middle)
-        {
-            pb(a, b);
-            stack_size--;
-        }
-        else
-            ra(a);
-        i++;
-    }
-    while (stack_size-- > 3)
+	i = 0;
+	middle = find_middle(*a);
+	stack_size = ft_lstd_size(*a);
+	while (stack_size > i)
+	{
+		if ((*a)->value < middle)
+		{
+			pb(a, b);
+			stack_size--;
+		}
+		else
+		{
+			ra(a);
+			i++;
+		}
+	}
+	while (stack_size-- > 3)
 		pb(a, b);
 	if (!is_sorted(*a))
 		sort_three(a);
 }
+
 static void	push_to_a(t_stack **a, t_stack **b)
 {
 	t_stack	*best_move;
@@ -71,6 +75,7 @@ static void	push_to_a(t_stack **a, t_stack **b)
 	optimize_rotation(a, best_move->target, 'a');
 	pa(a, b);
 }
+
 static void	init_nodes(t_stack *a, t_stack *b)
 {
 	set_current_index(a);
@@ -80,7 +85,7 @@ static void	init_nodes(t_stack *a, t_stack *b)
 	set_best_move(b);
 }
 
-void custom_sort(t_stack **a, t_stack **b)
+void	custom_sort(t_stack **a, t_stack **b)
 {
 	push_to_b(a, b);
 	while (*b)

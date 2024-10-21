@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 13:40:13 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:17:33 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	handle_error(char **args, t_stack **a, t_stack **b)
 long	ft_atol(const char *str)
 {
 	long	res;
-	int			sign;
-	int			i;
+	int		sign;
+	int		i;
 
 	res = 0;
 	sign = 1;

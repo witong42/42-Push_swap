@@ -6,17 +6,17 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 03:50:57 by witong            #+#    #+#             */
-/*   Updated: 2024/10/17 10:38:21 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/21 17:17:12 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void swap(t_stack *stack)
+static void	swap(t_stack *stack)
 {
 	int	tmp;
 
-	if(stack == NULL || stack->next == NULL)
+	if (stack == NULL || stack->next == NULL)
 		return ;
 	tmp = stack->value;
 	stack->value = stack->next->value;
@@ -31,6 +31,7 @@ void	sa(t_stack **a)
 	swap(*a);
 	ft_putstr_fd("sa\n", 1);
 }
+
 void	sb(t_stack **b)
 {
 	swap(*b);
