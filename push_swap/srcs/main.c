@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 16:54:14 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:41:44 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	push_swap(t_stack **a, t_stack **b)
 		custom_sort(a, b);
 }
 
-// Check args, init a and b, call the sorting function, free and exit.
+// Check args, init a and b, call the sorting function.
 int	main(int ac, char **av)
 {
 	t_stack	*a;

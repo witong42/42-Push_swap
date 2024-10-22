@@ -6,12 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 17:15:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:17:06 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Sets the current index and above_mid flag for each node in the stack.
 void	set_current_index(t_stack *stack)
 {
 	int	i;
@@ -30,6 +31,7 @@ void	set_current_index(t_stack *stack)
 	}
 }
 
+// Sets the target node in stack 'a' for each node in stack 'b'.
 void	set_target(t_stack *a, t_stack *b)
 {
 	t_stack	*current;
@@ -58,6 +60,7 @@ void	set_target(t_stack *a, t_stack *b)
 	}
 }
 
+// Calculate the cost of nodes in stack 'b' based on position and target.
 void	set_cost(t_stack *a, t_stack *b)
 {
 	int	size_a;
@@ -78,6 +81,7 @@ void	set_cost(t_stack *a, t_stack *b)
 	}
 }
 
+// Sets the best move in stack 'b' based on the lowest cost.
 void	set_best_move(t_stack *b)
 {
 	long	best_value;
@@ -98,6 +102,7 @@ void	set_best_move(t_stack *b)
 	best_node->best_move = true;
 }
 
+// Moves the smallest node in stack 'a' to the top.
 void	smallest_to_top(t_stack **a)
 {
 	t_stack	*best_move;

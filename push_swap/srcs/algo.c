@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 17:15:03 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/22 20:16:43 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	push_to_b(t_stack **a, t_stack **b)
 		sort_three(a);
 }
 
+// Push nodes back to Stack A using a "greedy" algo.
 static void	push_to_a(t_stack **a, t_stack **b)
 {
 	t_stack	*best_move;
@@ -76,6 +77,8 @@ static void	push_to_a(t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
+// Initializes nodes in stacks 'a' and 'b'
+// with index, target, cost, and best move.
 static void	init_nodes(t_stack *a, t_stack *b)
 {
 	set_current_index(a);
@@ -85,6 +88,8 @@ static void	init_nodes(t_stack *a, t_stack *b)
 	set_best_move(b);
 }
 
+// Custom sort algorithm for stacks 'a' and 'b'
+// using midpoint quicksort and "mechanical turk."
 void	custom_sort(t_stack **a, t_stack **b)
 {
 	push_to_b(a, b);
