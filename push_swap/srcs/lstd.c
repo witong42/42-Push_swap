@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:32:09 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 08:52:06 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 09:39:01 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_lstd_size(t_stack *lst)
 }
 
 // Returns the last node in the stack.
-static t_stack	*ft_lstd_last(t_stack *lst)
+t_stack	*ft_lstd_last(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);

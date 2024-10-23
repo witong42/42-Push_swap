@@ -8,24 +8,29 @@ OBJS =		$(SRCS:%.c=%.o)
 
 # Compile and Flags
 CC =		gcc
-CFLAGS =	-Wall -Werror -Wextra -I./srcs
-LIB =		-L./libft -lft
+CFLAGS =	-Wall -Werror -Wextra -I./srcs -I$(LIBFT)
+LIBFT =		./libft
 AR =		ar rcs
 RM =		rm -f
 
 all :			$(NAME)
 
-$(NAME) :		$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
+$(NAME) :		$(OBJS) $(LIBFT)/libft.a
+				$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft -o $(NAME)
+
+$(LIBFT)/libft.a:
+				$(MAKE) -C $(LIBFT)
 
 %.o:%.c
 				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 				$(RM) -r $(OBJS)
+				$(MAKE) -C $(LIBFT) clean
 
 fclean: 		clean
 				$(RM) $(NAME)
+				$(MAKE) -C $(LIBFT) fclean
 
 re: 			fclean all
 

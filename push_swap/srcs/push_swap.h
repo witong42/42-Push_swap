@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:52:12 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 17:10:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 09:39:28 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	rrr(t_stack **a, t_stack **b);
 // lstd.c
 t_stack	*ft_lstd_new(int value);
 int		ft_lstd_size(t_stack *lst);
-void	ft_lstd_add_front(t_stack **lst, t_stack *front);
+t_stack	*ft_lstd_last(t_stack *lst);
 void	ft_lstd_add_back(t_stack **lst, t_stack *back);
 
 // parsing.c
