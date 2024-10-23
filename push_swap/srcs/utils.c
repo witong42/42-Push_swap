@@ -6,12 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 17:17:33 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 09:25:15 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Prints all nodes in the stack.
 void	print_stack(t_stack *head)
 {
 	t_stack	*lst;
@@ -24,6 +25,7 @@ void	print_stack(t_stack *head)
 	}
 }
 
+// Frees all elements in the stack.
 void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -39,6 +41,7 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
+// Frees all args in an args array.
 void	free_args(char **args)
 {
 	int	i;
@@ -54,6 +57,7 @@ void	free_args(char **args)
 	free(args);
 }
 
+// Handles errors by freeing args and stacks 'a' and 'b'.
 void	handle_error(char **args, t_stack **a, t_stack **b)
 {
 	if (args != NULL)
@@ -66,6 +70,7 @@ void	handle_error(char **args, t_stack **a, t_stack **b)
 	exit (1);
 }
 
+// Converts a string to a long int.
 long	ft_atol(const char *str)
 {
 	long	res;

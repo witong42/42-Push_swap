@@ -6,13 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:00:01 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 15:43:56 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 08:59:29 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Check if a string contains only digits and an optional leading sign
+// Check if a string contains digits with optional sign.
 static int	is_valid_number(const char *str)
 {
 	if (!*str)
@@ -30,7 +30,7 @@ static int	is_valid_number(const char *str)
 	return (1);
 }
 
-// Function to check for duplicate numbers in the stack
+// Function to check for duplicate numbers in the stack.
 static int	has_duplicates(t_stack *stack)
 {
 	t_stack	*current;
@@ -51,6 +51,7 @@ static int	has_duplicates(t_stack *stack)
 	return (0);
 }
 
+// Parses and validates cmd arguments, then put them into a stack.
 static int	process_args(t_stack **stack, const char *arg)
 {
 	char	**split_args;
@@ -78,6 +79,7 @@ static int	process_args(t_stack **stack, const char *arg)
 	return (free_args(split_args), 1);
 }
 
+// Finish the parsing and validation process and check for duplicates.
 t_stack	*init_stack(int ac, char **av)
 {
 	t_stack	*stack;

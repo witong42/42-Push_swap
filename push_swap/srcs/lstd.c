@@ -6,12 +6,13 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:32:09 by witong            #+#    #+#             */
-/*   Updated: 2024/10/21 17:12:46 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 08:52:06 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Creates a new stack node with the given value.
 t_stack	*ft_lstd_new(int value)
 {
 	t_stack	*lst;
@@ -25,6 +26,7 @@ t_stack	*ft_lstd_new(int value)
 	return (lst);
 }
 
+// Calculates the size of the stack.
 int	ft_lstd_size(t_stack *lst)
 {
 	int	size;
@@ -38,6 +40,7 @@ int	ft_lstd_size(t_stack *lst)
 	return (size);
 }
 
+// Returns the last node in the stack.
 static t_stack	*ft_lstd_last(t_stack *lst)
 {
 	if (!lst)
@@ -47,6 +50,7 @@ static t_stack	*ft_lstd_last(t_stack *lst)
 	return (lst);
 }
 
+// Adds a node to the end of the stack.
 void	ft_lstd_add_back(t_stack **lst, t_stack *back)
 {
 	t_stack	*last;

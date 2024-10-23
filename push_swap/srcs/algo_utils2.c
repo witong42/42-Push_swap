@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/22 20:17:06 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 08:46:21 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	set_target(t_stack *a, t_stack *b)
 	}
 }
 
-// Calculate the cost of nodes in stack 'b' based on position and target.
+// Calculate the cost of nodes in stack 'b' based on index and target.
 void	set_cost(t_stack *a, t_stack *b)
 {
 	int	size_a;
