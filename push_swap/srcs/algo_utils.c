@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 19:30:48 by witong            #+#    #+#             */
-/*   Updated: 2024/10/22 20:01:45 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:53:28 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_stack	*find_smallest(t_stack *stack)
 {
 	t_stack	*smallest;
 
+	if (!stack)
+		return (NULL);
 	smallest = stack;
 	stack = stack->next;
 	while (stack)

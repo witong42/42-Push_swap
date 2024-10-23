@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 08:46:21 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:38:15 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	set_cost(t_stack *a, t_stack *b)
 		b->cost = b->index;
 		if (!(b->above_mid))
 			b->cost = size_b - (b->index);
-		if (b->target->above_mid)
+		if (b->target && b->target->above_mid)
 			b->cost += b->target->index;
-		else
+		else if (b->target)
 			b->cost += size_a - (b->target->index);
 		b = b->next;
 	}

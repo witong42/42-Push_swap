@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 08:13:16 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 09:25:15 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:13:53 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_args(char **args)
 // Handles errors by freeing args and stacks 'a' and 'b'.
 void	handle_error(char **args, t_stack **a, t_stack **b)
 {
-	if (args != NULL)
+	if (args)
 		free_args(args);
 	if (a == NULL || *a != NULL)
 		free_stack(a);

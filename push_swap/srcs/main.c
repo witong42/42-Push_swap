@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 08:59:47 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:29:31 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Return 1 if stack is already sorted.
 int	is_sorted(t_stack *stack)
 {
-	while (stack->next != NULL)
+	while (stack && stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
 			return (0);

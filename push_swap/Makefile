@@ -7,7 +7,7 @@ SRCS =		srcs/main.c srcs/parsing.c srcs/utils.c srcs/lstd.c \
 OBJS =		$(SRCS:%.c=%.o)
 
 # Compile and Flags
-CC =		gcc
+CC =		gcc -g
 CFLAGS =	-Wall -Werror -Wextra -I./srcs -I$(LIBFT)
 LIBFT =		./libft
 AR =		ar rcs
