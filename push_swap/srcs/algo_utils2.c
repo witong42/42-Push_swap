@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 14:38:15 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 06:54:26 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	set_current_index(t_stack *stack)
 	}
 }
 
-// Sets the target node in stack 'a' for each node in stack 'b'.
+// Sets the smallest node in stack 'a' that is
+// greater than current value in 'b' for each node of the stack.
 void	set_target(t_stack *a, t_stack *b)
 {
 	t_stack	*current;

@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 14:51:13 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 06:55:07 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ static void	push_to_a(t_stack **a, t_stack **b)
 
 	best_move = find_best_move(*b);
 	if (best_move && best_move->target
-			&& best_move->above_mid && best_move->target->above_mid)
+		&& best_move->above_mid && best_move->target->above_mid)
 		rotate_both(a, b, best_move);
 	else if (best_move && !(best_move->above_mid)
-			&& !(best_move->target->above_mid))
+		&& !(best_move->target->above_mid))
 		reverse_rotate_both(a, b, best_move);
 	optimize_rotation(b, best_move, 'b');
 	optimize_rotation(a, best_move->target, 'a');

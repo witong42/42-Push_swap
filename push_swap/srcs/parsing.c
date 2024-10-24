@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:00:01 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 13:57:39 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 06:54:48 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // Check if a string contains digits with optional sign.
 static int	is_valid_number(const char *str)
 {
-
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (*str == '-' || *str == '+')
