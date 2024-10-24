@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:24:33 by witong            #+#    #+#             */
-/*   Updated: 2024/10/24 06:54:26 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 07:16:24 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	set_current_index(t_stack *stack)
 	int	i;
 	int	middle;
 
-	i = 0;
 	if (!stack)
 		return ;
+	i = 0;
 	middle = ft_lstd_size(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
 		stack->above_mid = (i <= middle);
+		i++;
 		stack = stack->next;
-		++i;
 	}
 }
 
@@ -37,23 +37,23 @@ void	set_target(t_stack *a, t_stack *b)
 {
 	t_stack	*current;
 	t_stack	*target;
-	long	best_index;
+	long	best_value;
 
 	while (b)
 	{
-		best_index = LONG_MAX;
+		best_value = LONG_MAX;
 		target = NULL;
 		current = a;
 		while (current)
 		{
-			if (current->value > b->value && current->value < best_index)
+			if (current->value > b->value && current->value < best_value)
 			{
-				best_index = current->value;
 				target = current;
+				best_value = current->value;
 			}
 			current = current->next;
 		}
-		if (LONG_MAX == best_index)
+		if (best_value == LONG_MAX)
 			b->target = find_smallest(a);
 		else
 			b->target = target;
@@ -88,7 +88,7 @@ void	set_best_move(t_stack *b)
 	long	best_value;
 	t_stack	*best_node;
 
-	if (NULL == b)
+	if (!b)
 		return ;
 	best_value = LONG_MAX;
 	while (b)

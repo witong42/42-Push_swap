@@ -6,14 +6,14 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/24 06:55:07 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 07:11:23 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Function to find the midpoint as an approximate median
-static int	find_middle(t_stack *stack)
+int	find_middle(t_stack *stack)
 {
 	int		min;
 	int		max;
