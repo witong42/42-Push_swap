@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:08:17 by witong            #+#    #+#             */
-/*   Updated: 2024/10/24 07:11:23 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 18:49:56 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	push_to_b(t_stack **a, t_stack **b)
 	i = 0;
 	middle = find_middle(*a);
 	stack_size = ft_lstd_size(*a);
-	while (stack_size > i)
+	while (stack_size > i && stack_size > 3)
 	{
 		if ((*a)->value < middle)
 		{

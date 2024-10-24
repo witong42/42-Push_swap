@@ -6,7 +6,7 @@
 /*   By: witong <witong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:51:34 by witong            #+#    #+#             */
-/*   Updated: 2024/10/23 14:29:31 by witong           ###   ########.fr       */
+/*   Updated: 2024/10/24 19:01:41 by witong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	is_sorted(t_stack *stack)
 // Sorts a stack of 3 nodes in 2 moves at most.
 void	sort_three(t_stack **a)
 {
-	if ((*a)->value > (*a)->next->value
-		|| (*a)->next->value < (*a)->next->next->value)
+	if (((*a)->next->next) && ((*a)->value > (*a)->next->value
+		||  ((*a)->next->value < (*a)->next->next->value)))
 		ra(a);
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
-	if ((*a)->next->value > (*a)->next->next->value)
+	if ((*a)->next->next && (*a)->next->value > (*a)->next->next->value)
 		rra(a);
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
