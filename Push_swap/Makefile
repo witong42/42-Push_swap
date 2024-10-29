@@ -7,10 +7,9 @@ SRCS =		srcs/main.c srcs/parsing.c srcs/utils.c srcs/lstd.c \
 OBJS =		$(SRCS:%.c=%.o)
 
 # Compile and Flags
-CC =		gcc -g
+CC =		gcc
 CFLAGS =	-Wall -Werror -Wextra -I./srcs -I$(LIBFT)
 LIBFT =		./libft
-AR =		ar rcs
 RM =		rm -f
 
 all :			$(NAME)
@@ -21,17 +20,17 @@ $(NAME) :		$(OBJS) $(LIBFT)/libft.a
 $(LIBFT)/libft.a:
 				$(MAKE) -C $(LIBFT)
 
-%.o:%.c
+%.o : %.c
 				$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
+clean :
 				$(RM) -r $(OBJS)
 				$(MAKE) -C $(LIBFT) clean
 
-fclean: 		clean
+fclean : 		clean
 				$(RM) $(NAME)
 				$(MAKE) -C $(LIBFT) fclean
 
-re: 			fclean all
+re : 			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY :		all clean fclean re
